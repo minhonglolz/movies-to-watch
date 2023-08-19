@@ -1,11 +1,11 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from './styles/theme/theme'
+import { Layout } from './components/layout/Layout'
 
 function App () {
   return (
-    <ChakraProvider>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <ChakraProvider theme={theme}>
+      <Layout/>
     </ChakraProvider>
   )
 }
