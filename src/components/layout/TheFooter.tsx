@@ -6,7 +6,7 @@ const thisYear = new Date().getFullYear()
 
 export function TheFooter () {
   return (
-    <VStack p='8' justifyContent='center' gap={6}>
+    <HStack p='8' justifyContent='space-between' gap={6}>
       <HStack gap='4'>
         <Text>© 2018 - {thisYear}</Text>
         <Text fontSize='md' fontWeight='600'>
@@ -19,6 +19,6 @@ export function TheFooter () {
           <Image src={TMDBLogo}/>
         </Link>
       </HStack>
-    </VStack>
+    </HStack>
   )
 }
