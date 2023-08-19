@@ -4,7 +4,7 @@ import TMDBLogo from '../../assets/TMDB-logo.png'
 
 const thisYear = new Date().getFullYear()
 
-export function Footer () {
+export function TheFooter () {
   return (
     <VStack p='8' justifyContent='center' gap={6}>
       <HStack gap='4'>
