@@ -49,6 +49,8 @@ module.exports = {
     'react/jsx-curly-spacing': ['warn', { when: 'never', children: true }],
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-confusing-void-expression': 'off',
-    '@typescript-eslint/triple-slash-reference': 'off'
+    '@typescript-eslint/triple-slash-reference': 'off',
+    'react/self-closing-comp': 'warn',
+    'react/jsx-indent-props': ['warn', 2]
   }
 }
