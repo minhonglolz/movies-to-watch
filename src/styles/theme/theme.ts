@@ -4,8 +4,9 @@ import { config } from './config'
 
 export const theme = extendTheme({
   fonts: {
-    body: 'Outfit, sans-serif',
-    heading: 'Outfit, sans-serif'
+    body: '\'Mulish\' , sans-serif',
+    heading: '\'Mulish\' , sans-serif'
+  },
   components: {
     Button: {
       baseStyle: {
