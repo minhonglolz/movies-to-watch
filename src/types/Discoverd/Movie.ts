@@ -1,4 +1,4 @@
-import { type TMDBListResponse } from '../TMDB/tmdbListResponse'
+import { type TMDBListResponse } from '../TMDB/TMDBListResponse'
 
 export interface Movie {
   poster_path?: string
