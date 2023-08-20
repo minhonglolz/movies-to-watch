@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 export function TheHeader () {
   return (
-    <Flex p={4} justifyContent='space-between' alignItems='center' gap={4}>
-      <Button mr='auto' fontSize='xl' fontWeight='600' variant='unstyled'>
+    <Flex p={4} pt={8} justifyContent='space-between' alignItems='center' gap={4}>
+      <Button mr='auto' fontSize='xl' fontWeight='800' variant='unstyled'>
         <Link to='/'>Movies</Link>
       </Button>
       <Button variant='unstyled'>
