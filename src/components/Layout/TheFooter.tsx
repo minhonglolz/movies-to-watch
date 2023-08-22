@@ -1,4 +1,4 @@
-import { Flex, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Flex, HStack, Image, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import TMDBLogo from '../../assets/TMDB-logo.png'
 

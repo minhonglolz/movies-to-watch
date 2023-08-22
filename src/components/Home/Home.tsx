@@ -40,7 +40,7 @@ export function Home () {
     return getURLWithParams('https://api.themoviedb.org/3/discover/movie', params)
   }, [filter])
 
-  const { data, error, isLoading, isValidating } = useSWR<MovieResponse>(key, tmdbSWRFetcher, { focusThrottleInterval: 500000 })
+  const { data } = useSWR<MovieResponse>(key, tmdbSWRFetcher, { focusThrottleInterval: 500000 })
 
   const [isLargerThanLg] = useMediaQuery('(min-width: 960px)')
 
