@@ -16,6 +16,10 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
 
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 8.6.12
+
       - name: Install and Build 🔧
         run: |
           pnpm install --frozen-lockfile
