@@ -20,7 +20,7 @@ export interface Movie {
 
 export type MovieResponse = TMDBListResponse<Movie>
 
-export type SortByUnion = 'popularity.asc' | 'popularity.desc' | 'revenue.asc' | 'revenue.desc' | 'primary_release_date.asc' |
+export type SortByUnion = 'popularity.asc' | 'popularity.desc' | 'primary_release_date.asc' |
 'primary_release_date.desc' | 'vote_average.asc' | 'vote_average.desc' | 'vote_count.asc' | 'vote_count.desc'
 
 export type DiscoverMovieParams = Partial<{
