@@ -23,8 +23,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm run build
-          cd dist
-          touch .nojekyll
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
