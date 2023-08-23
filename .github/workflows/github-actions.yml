@@ -4,9 +4,7 @@ on:
     branches:
       - 'master'
 
-env:
-  VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
-  VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }}
+
 
 jobs:
   build-and-deploy:
@@ -25,6 +23,9 @@ jobs:
           version: 8.6.12
 
       - name: Install and Build 🔧
+        env:
+          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+          VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }}
    
         run: |
           pnpm install --frozen-lockfile
