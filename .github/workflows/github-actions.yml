@@ -21,10 +21,9 @@ jobs:
           version: 8.6.12
 
       - name: Set Environment Variables
-        run: echo "VITE_TMDB_API_KEY=$VITE_TMDB_API_KEY" >> $GITHUB_ENV
-        env:
-          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
-          VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }}
+        run: |
+          export VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+          export VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }}
 
       - name: Print Environment Variable
         run: echo "The value of VITE_TMDB_API_KEY is $VITE_TMDB_API_KEY"
