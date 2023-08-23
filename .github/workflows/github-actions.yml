@@ -25,7 +25,7 @@ jobs:
           version: 8.6.12
 
       - name: Install and Build 🔧
-        
+   
         run: |
           pnpm install --frozen-lockfile
           pnpm run build
@@ -33,6 +33,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: steps # The branch the action should deploy to.
+          branch: product # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
           single-commit: true
