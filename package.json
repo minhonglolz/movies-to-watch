@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.11.0",
     "axios": "^1.4.0",
     "chakra-react-select": "^4.7.0",
+    "dayjs": "^1.11.9",
     "firebase": "^10.2.0",
     "framer-motion": "^10.16.0",
     "localforage": "^1.10.0",
