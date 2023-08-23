@@ -38,3 +38,5 @@ export type DiscoverMovieParams = Partial<{
   'with_runtime.gte': number
   'with_runtime.lte': number
 }>
+
+export type sortByOptionsType = Array<{ label: string, value: SortByUnion }>
