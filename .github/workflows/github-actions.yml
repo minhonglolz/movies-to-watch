@@ -19,6 +19,15 @@ jobs:
         with:
           version: 8.6.12
 
+      - name: Set Up Environment
+        env:
+          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}  
+          VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }} 
+        run: |
+          echo "Setting up environment..."
+          echo "TMDB API KEY: $VITE_TMDB_API_KEY"
+          echo "TMDB API ROOT: $VITE_TMDB_API_ROOT"
+
       - name: Install and Build 🔧
         run: |
           pnpm install --frozen-lockfile
@@ -27,6 +36,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: product # The branch the action should deploy to.
+          branch: steps # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
           single-commit: true
