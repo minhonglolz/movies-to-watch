@@ -4,10 +4,6 @@ on:
     branches:
       - 'master'
 
-env:
-  VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}  
-  VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }} 
-
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
@@ -24,14 +20,14 @@ jobs:
         with:
           version: 8.6.12
 
-      - name: Set Up Environment
+      - name: Set Environment Variables
+        run: echo "VITE_TMDB_API_KEY=$VITE_TMDB_API_KEY" >> $GITHUB_ENV
         env:
-          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}  
-          VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }} 
-        run: |
-          echo "Setting up environment..."
-          echo "TMDB API KEY: $VITE_TMDB_API_KEY"
-          echo "TMDB API ROOT: $VITE_TMDB_API_ROOT"
+          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+          VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }}
+
+      - name: Print Environment Variable
+        run: echo "The value of VITE_TMDB_API_KEY is $VITE_TMDB_API_KEY"
 
       - name: Install and Build 🔧
         run: |
