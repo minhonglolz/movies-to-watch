@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - 'master'
+
+env:
+  VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}  
+  VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }} 
+
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
@@ -27,6 +32,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: product # The branch the action should deploy to.
+          branch: steps # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
           single-commit: true
