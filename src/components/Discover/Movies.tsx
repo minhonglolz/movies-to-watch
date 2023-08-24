@@ -1,4 +1,4 @@
-import { Flex, Grid, GridItem, Heading, Text, VStack, useTheme, Spacer, IconButton, useDisclosure } from '@chakra-ui/react'
+import { Flex, Grid, GridItem, Heading, Text, VStack, useTheme, Spacer, IconButton, useDisclosure, useColorModeValue } from '@chakra-ui/react'
 import useSWR from 'swr'
 import { tmdbSWRFetcher } from '../../utils/swrFetcher'
 import { getURLWithParams } from '../../utils/urlParams'
@@ -28,6 +28,7 @@ export function Movies () {
     setFilter(filter)
     onClose()
   }
+  const cardBorderColor = useColorModeValue(theme.colors.gray[50], theme.colors.gray[500])
 
   return (
     <Flex flexDirection={'column'}>
@@ -46,7 +47,7 @@ export function Movies () {
             <GridItem
               key={movie.id}
               borderRadius={12}
-              border={`.5px solid ${theme.colors.gray[500]}`}
+              border={`.5px solid ${cardBorderColor}`}
               shadow={'2xl'}
               height={'100%'}
               display={'flex'}
