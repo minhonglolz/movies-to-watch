@@ -13,13 +13,16 @@ export const DRAWER_MOVIES_SORT_BY_OPTIONS: sortByOptionsType = [
 ]
 
 export const MOVIES_INIT_FILTER: DiscoverMovieParams = {
-  page: 1,
-  sort_by: 'popularity.desc',
-  language: 'zh-tw',
   include_adult: 'false',
   include_video: 'false',
+  language: 'zh-TW',
+  page: 1,
+  sort_by: 'popularity.desc',
   'release_date.gte': dayjs().format('YYYY-MM-DD'),
-  'release_date.lte': dayjs().add(6, 'M').format('YYYY-MM-DD')
+  'release_date.lte': dayjs().add(5, 'M').format('YYYY-MM-DD'),
+  'vote_average.gte': 1,
+  'vote_average.lte': 10,
+  'vote_count.gte': 0
 }
 
 export const POSTER_IMAGE_URL_X1 = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'

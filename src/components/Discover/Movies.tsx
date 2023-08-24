@@ -16,7 +16,10 @@ export function Movies () {
   const [filter, setFilter] = useState<DiscoverMovieParams>(MOVIES_INIT_FILTER)
 
   const key = useMemo(() => {
-    const params: DiscoverMovieParams = filter
+    const params: DiscoverMovieParams = {
+      ...filter,
+      'vote_count.gte': filter['vote_count.gte'] * 100
+    }
     return getURLWithParams('https://api.themoviedb.org/3/discover/movie', params)
   }, [filter])
 
