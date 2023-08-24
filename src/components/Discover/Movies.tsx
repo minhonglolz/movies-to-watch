@@ -5,7 +5,7 @@ import { getURLWithParams } from '../../utils/urlParams'
 import { useMemo, useState } from 'react'
 import { traditionalized } from '../../utils/traditionalized'
 import { type DiscoverMovieParams, type MovieResponse } from '../../types/Discoverd/Movie'
-import { HamburgerIcon } from '@chakra-ui/icons'
+import { BiFilterAlt } from 'react-icons/bi'
 import { DrawerMoviesFilter } from './DrawerMoviesFilter'
 import { MOVIES_INIT_FILTER } from '../../constants/movies'
 import { Poster } from './Poster'
@@ -38,7 +38,7 @@ export function Movies () {
           onClick={onOpen}
           variant={'ghost'}
           aria-label='Filter database'
-          icon={<HamburgerIcon />} />
+          icon={<BiFilterAlt />} />
       </Flex>
       <Grid gap={6} templateColumns={['repeat(2, 1fr)', 'repeat(4, 1fr)', 'repeat(5, 1fr)']}>
         {data?.results.map((movie) => {
