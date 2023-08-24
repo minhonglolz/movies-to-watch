@@ -26,10 +26,10 @@ export type SortByUnion = 'popularity.asc' | 'popularity.desc' | 'primary_releas
 export type DiscoverMovieParams = Partial<{
   include_adult: StringBooleanUnion
   include_video: StringBooleanUnion
-  page: number
+  page: string
   sort_by: SortByUnion
   watch_region: 'TW'
-  language: 'zh-tw'
+  language: 'zh-TW'
   'release_date.gte': string
   'release_date.lte': string
   'vote_average.gte': string
@@ -37,6 +37,7 @@ export type DiscoverMovieParams = Partial<{
   'vote_count.gte': string
   'with_runtime.gte': number
   'with_runtime.lte': number
+  certification_country: 'TW'
 }>
 
 export type sortByOptionsType = Array<{ label: string, value: SortByUnion }>

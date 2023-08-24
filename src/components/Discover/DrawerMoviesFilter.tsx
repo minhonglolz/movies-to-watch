@@ -3,7 +3,7 @@ import { Select } from 'chakra-react-select'
 import { useState } from 'react'
 import { TextFieldLabel } from '../TextFieldLabel'
 import { DRAWER_MOVIES_SORT_BY_OPTIONS, MOVIES_INIT_FILTER } from '../../constants/movies'
-import { type sortByOptionsType, type DiscoverMovieParams } from '../../types/Discoverd/Movie'
+import { type sortByOptionsType, type DiscoverMovieParams } from '../../types/Discoverd/Movies'
 
 interface Filter {
   sort_by: sortByOptionsType[number]
