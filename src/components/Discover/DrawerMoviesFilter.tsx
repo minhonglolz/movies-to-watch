@@ -65,7 +65,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
       size={isLargerThanLg ? 'sm' : 'full'}
       >
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent my={4}>
         <DrawerHeader display={'flex'} alignItems={'center'} >
           <Text>搜尋</Text>
           <Spacer/>
@@ -151,7 +151,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
               <RangeSliderThumb index={1} zIndex={0}/>
             </RangeSlider>
           </Flex>
-          <Flex flexDirection={'column'}>
+          <Flex flexDirection={'column'} mb={'12'}>
             <TextFieldLabel value='最低評分數' mb={8}/>
             <Slider
               alignSelf={'flex-end'}
