@@ -6,8 +6,8 @@ export const DRAWER_MOVIES_SORT_BY_OPTIONS: sortByOptionsType = [
   { label: '按人氣升序', value: 'popularity.asc' },
   { label: '按評分降序', value: 'vote_average.desc' },
   { label: '按評分升序', value: 'vote_average.asc' },
-  { label: '按上評分數降序', value: 'vote_count.desc' },
-  { label: '按上評分數升序', value: 'vote_count.asc' },
+  { label: '按評分數降序', value: 'vote_count.desc' },
+  { label: '按評分數升序', value: 'vote_count.asc' },
   { label: '按上映日期降序', value: 'primary_release_date.desc' },
   { label: '按上映日期升序', value: 'primary_release_date.asc' }
 ]

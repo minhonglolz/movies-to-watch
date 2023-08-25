@@ -7,7 +7,6 @@ import { type sortByOptionsType, type DiscoverMovieParams } from '../../types/Di
 
 const rangeSliderMarkStyle = {
   textAlign: 'center',
-  color: 'white',
   mt: '-9',
   ml: '-6',
   w: '12'
@@ -148,8 +147,8 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
               <RangeSliderTrack>
                 <RangeSliderFilledTrack />
               </RangeSliderTrack>
-              <RangeSliderThumb index={0} />
-              <RangeSliderThumb index={1} />
+              <RangeSliderThumb index={0} zIndex={0} />
+              <RangeSliderThumb index={1} zIndex={0}/>
             </RangeSlider>
           </Flex>
           <Flex flexDirection={'column'}>
@@ -176,22 +175,11 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
               <SliderMark value={0} mt='3' ml='-5px'>
                 0
               </SliderMark>
-              <SliderMark value={1} mt='3' ml='-14px'>
-                100
-              </SliderMark>
-              <SliderMark value={2} mt='3' ml='-14px'>
-                200
-              </SliderMark>
-              <SliderMark value={3} mt='3' ml='-14px'>
-                300
-              </SliderMark>
-              <SliderMark value={4} mt='3' ml='-14px'>
-                400
-              </SliderMark>
-              <SliderMark value={5} mt='3' ml='-14px'>
-                500
-              </SliderMark>
-              <SliderThumb />
+              {new Array(5).fill('').map((_, index) =>
+                <SliderMark key={index} value={index + 1} mt='3' ml='-14px'>
+                  {(index + 1) * 100}
+                </SliderMark>)}
+              <SliderThumb zIndex={0}/>
             </Slider>
           </Flex>
         </DrawerBody>
