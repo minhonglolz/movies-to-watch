@@ -56,7 +56,7 @@ export function Movies () {
               display={'flex'}
               flexDirection={'column'}
             >
-              <Poster posterUrl={movie.poster_path} />
+              <Poster posterUrl={movie.poster_path} id={movie.id} />
               <VStack p={2} alignItems={'start'} gap={1}>
                 <Text fontWeight={600} fontSize={['sm', 'sm', 'md']}>{traditionalized(movie.title)}</Text>
                 <Text fontSize='xs'>平均分數：{(movie.vote_average)}</Text>

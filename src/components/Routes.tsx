@@ -3,14 +3,16 @@ import { WatchList } from './WatchList/WatchList'
 import App from '../App'
 import { NotFound } from './NotFound'
 import { Home } from './Home/Home'
+import { MovieInfo } from './Discover/MovieInfo'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App/>,
+    element: <App />,
     children: [
-      { path: '', element: <Home/> },
-      { path: 'watch-list', element: <WatchList/> },
+      { path: '', element: <Home /> },
+      { path: 'movie/:id', element: <MovieInfo /> },
+      { path: 'watch-list', element: <WatchList /> },
       { path: '*', element: <NotFound /> }
     ]
   }
