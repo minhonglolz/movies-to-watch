@@ -66,9 +66,9 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
       >
       <DrawerOverlay />
       <DrawerContent my={4}>
-        <DrawerHeader display={'flex'} alignItems={'center'} >
+        <DrawerHeader display={'flex'} alignItems={'center'}>
           <Text>搜尋</Text>
-          <Spacer/>
+          <Spacer />
           <Button variant='outline' onClick={handleReset}>重置</Button>
         </DrawerHeader>
 
@@ -116,7 +116,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
             </HStack>
           </Box>
           <Flex flexDirection={'column'}>
-            <TextFieldLabel value='評分' mb={8}/>
+            <TextFieldLabel value='評分' mb={8} />
             <RangeSlider
               w={'98%'}
               alignSelf={'flex-end'}
@@ -148,11 +148,11 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                 <RangeSliderFilledTrack />
               </RangeSliderTrack>
               <RangeSliderThumb index={0} zIndex={0} />
-              <RangeSliderThumb index={1} zIndex={0}/>
+              <RangeSliderThumb index={1} zIndex={0} />
             </RangeSlider>
           </Flex>
           <Flex flexDirection={'column'} mb={'12'}>
-            <TextFieldLabel value='最低評分數' mb={8}/>
+            <TextFieldLabel value='最低評分數' mb={8} />
             <Slider
               alignSelf={'flex-end'}
               value={moviesFilter['vote_count.gte']}
@@ -179,7 +179,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                 <SliderMark key={index} value={index + 1} mt='3' ml='-14px'>
                   {(index + 1) * 100}
                 </SliderMark>)}
-              <SliderThumb zIndex={0}/>
+              <SliderThumb zIndex={0} />
             </Slider>
           </Flex>
         </DrawerBody>

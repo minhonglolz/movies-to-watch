@@ -13,7 +13,7 @@ export function TheHeader () {
           待看清單
         </Link>
       </Button>
-      <ThemeToggle/>
+      <ThemeToggle />
     </Flex>
   )
 }

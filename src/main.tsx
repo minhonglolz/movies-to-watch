@@ -10,6 +10,6 @@ if (target == null) throw new Error()
 ReactDOM.createRoot(target).render(
   <React.StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-    <Routes/>
+    <Routes />
   </React.StrictMode>
 )

@@ -5,7 +5,7 @@ import { Layout } from './components/Layout/Layout'
 function App () {
   return (
     <ChakraProvider theme={theme}>
-      <Layout/>
+      <Layout />
     </ChakraProvider>
   )
 }

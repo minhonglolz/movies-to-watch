@@ -51,6 +51,12 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
     'react/self-closing-comp': 'warn',
-    'react/jsx-indent-props': ['warn', 2]
+    'react/jsx-indent-props': ['warn', 2],
+    'react/jsx-tag-spacing': ['warn', {
+      closingSlash: 'never',
+      beforeSelfClosing: 'always',
+      afterOpening: 'never',
+      beforeClosing: 'never'
+    }]
   }
 }

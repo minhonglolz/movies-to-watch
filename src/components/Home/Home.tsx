@@ -4,7 +4,7 @@ import { Movies } from '../Discover/Movies'
 export function Home () {
   return (
     <Box>
-      <Movies/>
+      <Movies />
     </Box>
   )
 }

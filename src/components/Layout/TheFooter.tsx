@@ -16,7 +16,7 @@ export function TheFooter () {
       <Flex gap={'4'} justifyContent='center' alignItems={'center'}>
         <Text>Powered by</Text>
         <Link to="https://www.themoviedb.org/">
-          <Image src={TMDBLogo}/>
+          <Image src={TMDBLogo} />
         </Link>
       </Flex>
     </HStack>
