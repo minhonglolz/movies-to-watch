@@ -52,7 +52,6 @@ export function Movies () {
               borderRadius={12}
               border={`.5px solid ${cardBorderColor}`}
               shadow={'2xl'}
-              height={'100%'}
               display={'flex'}
               flexDirection={'column'}
             >
