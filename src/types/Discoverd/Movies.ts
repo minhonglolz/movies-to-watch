@@ -41,3 +41,54 @@ export interface DiscoverMovieParams extends Record<string, unknown> {
 }
 
 export type sortByOptionsType = Array<{ label: string, value: SortByUnion }>
+
+export interface MovieDetailParams extends Record<string, unknown> {
+  language: 'zh-TW'
+}
+export interface MovieDetail {
+  id: number
+  backdrop_path: string
+  budget: number
+  revenue: number
+  homepage: string
+  imdb_id: string
+  overview: string
+  poster_path: string
+  release_date: string
+  title: string
+  runtime: number
+  vote_average: string
+  vote_count: string
+  genres: Array<{
+    id: number
+    name: string
+  }>
+}
+
+export interface MovieCreditsParams extends Record<string, unknown> {
+  language: 'zh-TW'
+}
+export interface MovieCredits {
+  id: number
+  cast: Array<{
+    adult: boolean
+    id: number
+    name: string
+    original_name: string
+    profile_path: string
+    character: string
+  }>
+  crew: Array<{
+    adult: false
+    gender: 2
+    id: 7626
+    known_for_department: string
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string
+    credit_id: string
+    department: string
+    job: string
+  }>
+}
