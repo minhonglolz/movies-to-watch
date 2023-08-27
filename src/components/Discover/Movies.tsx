@@ -1,4 +1,4 @@
-import { Flex, Grid, GridItem, Heading, Text, VStack, useTheme, Spacer, IconButton, useDisclosure, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Grid, GridItem, Heading, Text, VStack, useTheme, Spacer, IconButton, useDisclosure, useColorModeValue, SimpleGrid } from '@chakra-ui/react'
 import useSWR from 'swr'
 import { tmdbSWRFetcher } from '../../utils/swrFetcher'
 import { getURLWithParams } from '../../utils/urlParams'
@@ -45,7 +45,7 @@ export function Movies () {
           icon={<BiFilterAlt />}
         />
       </Flex>
-      <Grid gap={6} templateColumns={['repeat(2, 1fr)', 'repeat(4, 1fr)', 'repeat(5, 1fr)']}>
+      <SimpleGrid gap={6} columns={[2, 4, 5]}>
         {data?.results.map((movie) => {
           return (
             <GridItem
@@ -64,7 +64,7 @@ export function Movies () {
             </GridItem>
           )
         })}
-      </Grid>
+      </SimpleGrid>
       <DrawerMoviesFilter
         filter={filter}
         isOpen={isOpen}

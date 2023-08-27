@@ -1,4 +1,4 @@
-import { Box, Image, useMediaQuery, useTheme } from '@chakra-ui/react'
+import { AspectRatio, Box, Image, useMediaQuery, useTheme } from '@chakra-ui/react'
 import { POSTER_IMAGE_URL_X2, POSTER_IMAGE_URL_X1 } from '../../constants/movies'
 import noImage from '../../assets/noImage.svg'
 import { useState } from 'react'
@@ -18,12 +18,11 @@ export function Poster ({ posterUrl, id }: Props) {
 
   const imageProps = {
     onClick: () => navigate(`movie/${id}`),
-    cursor: 'pointer',
-    borderTopRadius: 12
+    cursor: 'pointer'
   }
 
   return (
-    <Box h={'100%'} overflow={'hidden'} borderRadius={12}>
+    <Box overflow={'hidden'} borderTopRadius={'12px'}>
       {posterUrl != null
         ? <Image
             {...imageProps}
@@ -38,13 +37,13 @@ export function Poster ({ posterUrl, id }: Props) {
             }}
             src={`${isLargerThanLg ? POSTER_IMAGE_URL_X2 : POSTER_IMAGE_URL_X1}${posterUrl}`}
           />
-        : <Image
+        : <AspectRatio ratio={2 / 3}>
+          <Image
             {...imageProps}
-            h={'100%'}
-            objectFit={'cover'}
-            borderTopRadius={12}
+            objectFit={'fill'}
             src={noImage}
           />
+        </AspectRatio>
           }
     </Box>
   )
