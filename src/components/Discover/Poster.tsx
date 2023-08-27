@@ -29,11 +29,10 @@ export function Poster ({ posterUrl, id }: Props) {
             opacity={isLoad ? 1 : 0}
             h={isLoad ? 'auto' : [150, 180, 320]}
             backgroundColor={theme.colors.gray[900]}
-            transition={'all .5s'}
+            transition={'opacity .5s'}
             onLoad={() => setIsLoad(true)}
             _hover={{
-              opacity: 0.8,
-              transform: 'scale(1.05)'
+              opacity: 0.6
             }}
             src={`${isLargerThanLg ? POSTER_IMAGE_URL_X2 : POSTER_IMAGE_URL_X1}${posterUrl}`}
           />

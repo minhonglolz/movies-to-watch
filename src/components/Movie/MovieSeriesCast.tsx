@@ -61,11 +61,6 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
               ))}
             </Flex>
           </ModalBody>
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              關閉
-            </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
 
