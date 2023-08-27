@@ -42,7 +42,8 @@ export function Movies () {
           onClick={onOpen}
           variant={'ghost'}
           aria-label='Filter database'
-          icon={<BiFilterAlt />} />
+          icon={<BiFilterAlt />}
+        />
       </Flex>
       <Grid gap={6} templateColumns={['repeat(2, 1fr)', 'repeat(4, 1fr)', 'repeat(5, 1fr)']}>
         {data?.results.map((movie) => {

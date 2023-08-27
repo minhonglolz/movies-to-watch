@@ -63,7 +63,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
       placement='right'
       onClose={onClose}
       size={isLargerThanLg ? 'sm' : 'full'}
-      >
+    >
       <DrawerOverlay />
       <DrawerContent my={4}>
         <DrawerHeader display={'flex'} alignItems={'center'}>
@@ -86,7 +86,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                 }
               }}
               value={moviesFilter.sort_by}
-             />
+            />
           </Box>
           <Box>
             <TextFieldLabel value='發布日期' />
@@ -131,17 +131,17 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                   'vote_average.lte': lte
                 })
               }}
-              >
+            >
               <RangeSliderMark
                 value={moviesFilter['vote_average.gte']}
                 {...rangeSliderMarkStyle}
-                >
+              >
                 {moviesFilter['vote_average.gte']}
               </RangeSliderMark>
               <RangeSliderMark
                 value={moviesFilter['vote_average.lte']}
                 {...rangeSliderMarkStyle}
-                >
+              >
                 {moviesFilter['vote_average.lte']}
               </RangeSliderMark>
               <RangeSliderTrack>
@@ -165,7 +165,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                   'vote_count.gte': newValue
                 })
               }}
-             >
+            >
               <SliderTrack>
                 <SliderFilledTrack />
               </SliderTrack>

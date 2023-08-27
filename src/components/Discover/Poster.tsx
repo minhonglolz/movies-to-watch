@@ -28,6 +28,7 @@ export function Poster ({ posterUrl, id }: Props) {
         ? <Image
             {...imageProps}
             opacity={isLoad ? 1 : 0}
+            h={isLoad ? 'auto' : [150, 180, 320]}
             backgroundColor={theme.colors.gray[900]}
             transition={'all .5s'}
             onLoad={() => setIsLoad(true)}
@@ -36,14 +37,14 @@ export function Poster ({ posterUrl, id }: Props) {
               transform: 'scale(1.05)'
             }}
             src={`${isLargerThanLg ? POSTER_IMAGE_URL_X2 : POSTER_IMAGE_URL_X1}${posterUrl}`}
-            />
+          />
         : <Image
             {...imageProps}
             h={'100%'}
             objectFit={'cover'}
             borderTopRadius={12}
             src={noImage}
-            />
+          />
           }
     </Box>
   )
