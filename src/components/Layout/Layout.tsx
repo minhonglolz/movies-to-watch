@@ -8,7 +8,7 @@ export function Layout () {
     <Box transition="0.5s ease-out" minHeight="100vh">
       <Box margin="0 auto" maxWidth={1200}>
         <TheHeader />
-        <Box as="main" marginY={8} p={4}><Outlet /></Box>
+        <Box as="main" marginY={6} p={4}><Outlet /></Box>
         <TheFooter />
       </Box>
     </Box>
