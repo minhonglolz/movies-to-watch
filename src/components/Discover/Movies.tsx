@@ -1,4 +1,4 @@
-import { Flex, Grid, GridItem, Heading, Text, VStack, useTheme, Spacer, IconButton, useDisclosure, useColorModeValue, SimpleGrid } from '@chakra-ui/react'
+import { Flex, GridItem, Heading, Text, VStack, useTheme, Spacer, IconButton, useDisclosure, useColorModeValue, SimpleGrid } from '@chakra-ui/react'
 import useSWR from 'swr'
 import { tmdbSWRFetcher } from '../../utils/swrFetcher'
 import { getURLWithParams } from '../../utils/urlParams'
@@ -9,9 +9,11 @@ import { BiFilterAlt } from 'react-icons/bi'
 import { DrawerMoviesFilter } from './DrawerMoviesFilter'
 import { MOVIES_INIT_FILTER } from '../../constants/movies'
 import { Poster } from './Poster'
+import { useNavigate } from 'react-router-dom'
 
 export function Movies () {
   const theme = useTheme()
+  const navigate = useNavigate()
 
   const [filter, setFilter] = useState<DiscoverMovieParams>(MOVIES_INIT_FILTER)
 
@@ -58,7 +60,20 @@ export function Movies () {
             >
               <Poster posterUrl={movie.poster_path} id={movie.id} />
               <VStack p={2} alignItems={'start'} gap={1}>
-                <Text fontWeight={600} fontSize={['sm', 'sm', 'md']}>{traditionalized(movie.title)}</Text>
+                <Text
+                  onClick={() => {
+                    navigate(`/movie/${movie.id}`)
+                  }}
+                  cursor={'pointer'}
+                  fontWeight={600}
+                  fontSize={['sm', 'sm', 'md']}
+                  transition={'opacity .3s'}
+                  _hover={{
+                    opacity: 0.6
+                  }}
+                >
+                  {traditionalized(movie.title)}
+                </Text>
                 <Text fontSize='xs'>平均分數：{(movie.vote_average)}</Text>
               </VStack>
             </GridItem>
