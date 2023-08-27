@@ -27,3 +27,7 @@ export const MOVIES_INIT_FILTER: DiscoverMovieParams = {
 
 export const POSTER_IMAGE_URL_X1 = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
 export const POSTER_IMAGE_URL_X2 = 'https://www.themoviedb.org/t/p/w440_and_h660_face/'
+export const POSTER_IMAGE_URL_X3 = 'https://www.themoviedb.org/t/p/w600_and_h900_face/'
+export const PEOPLE_IMAGE_URL_X1 = 'https://www.themoviedb.org/t/p/w150_and_h150_face/'
+
+export const MAX_DISPLAY_CAST = 10
