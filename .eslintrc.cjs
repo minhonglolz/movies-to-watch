@@ -57,6 +57,8 @@ module.exports = {
       beforeSelfClosing: 'always',
       afterOpening: 'never',
       beforeClosing: 'never'
-    }]
+    }],
+    'react/jsx-closing-bracket-location': ['warn', 'tag-aligned'],
+    '@typescript-eslint/strict-boolean-expressions': 'off'
   }
 }
