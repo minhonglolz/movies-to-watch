@@ -1,4 +1,4 @@
-import { Flex, HStack, Button, Avatar, Text, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, VStack } from '@chakra-ui/react'
+import { Flex, HStack, Button, Avatar, Text, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { MAX_DISPLAY_CAST, PEOPLE_IMAGE_URL_X1 } from '../../constants/movies'
 import { type MovieCredits } from '../../types/Discoverd/Movies'
