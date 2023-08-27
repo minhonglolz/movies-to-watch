@@ -3,7 +3,7 @@ import { WatchList } from './WatchList/WatchList'
 import App from '../App'
 import { NotFound } from './NotFound'
 import { Home } from './Home/Home'
-import { MovieInfo } from './Discover/MovieInfo'
+import { MovieInfo } from './Movie/MovieInfo'
 
 const router = createBrowserRouter([
   {
