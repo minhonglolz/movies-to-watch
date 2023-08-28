@@ -64,8 +64,8 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
       onClose={onClose}
       size={isLargerThanLg ? 'sm' : 'full'}
     >
-      <DrawerOverlay />
-      <DrawerContent my={0}>
+      <DrawerOverlay height='100% !important' />
+      <DrawerContent my={0} height='100% !important'>
         <DrawerHeader display={'flex'} alignItems={'center'}>
           <Text>搜尋</Text>
           <Spacer />
