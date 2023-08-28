@@ -1,20 +1,15 @@
-import { Flex, GridItem, Heading, Text, VStack, useTheme, Spacer, IconButton, useDisclosure, useColorModeValue, SimpleGrid } from '@chakra-ui/react'
+import { Flex, Heading, Spacer, IconButton, useDisclosure, SimpleGrid } from '@chakra-ui/react'
 import useSWR from 'swr'
 import { tmdbSWRFetcher } from '../../utils/swrFetcher'
 import { getURLWithParams } from '../../utils/urlParams'
 import { useMemo, useState } from 'react'
-import { traditionalized } from '../../utils/traditionalized'
 import { type DiscoverMovieParams, type MovieResponse } from '../../types/Discoverd/Movies'
 import { BiFilterAlt } from 'react-icons/bi'
 import { DrawerMoviesFilter } from './DrawerMoviesFilter'
 import { MOVIES_INIT_FILTER } from '../../constants/movies'
-import { Poster } from './Poster'
-import { useNavigate } from 'react-router-dom'
+import { CardMovie } from '../CardMovie'
 
 export function Movies () {
-  const theme = useTheme()
-  const navigate = useNavigate()
-
   const [filter, setFilter] = useState<DiscoverMovieParams>(MOVIES_INIT_FILTER)
 
   const key = useMemo(() => {
@@ -33,7 +28,6 @@ export function Movies () {
     setFilter(filter)
     onClose()
   }
-  const cardBorderColor = useColorModeValue(theme.colors.gray[50], theme.colors.gray[500])
 
   return (
     <Flex flexDirection={'column'}>
@@ -50,33 +44,13 @@ export function Movies () {
       <SimpleGrid gap={6} columns={[2, 4, 5]}>
         {data?.results.map((movie) => {
           return (
-            <GridItem
+            <CardMovie
               key={movie.id}
-              borderRadius={12}
-              border={`.5px solid ${cardBorderColor}`}
-              shadow={'2xl'}
-              display={'flex'}
-              flexDirection={'column'}
-            >
-              <Poster posterUrl={movie.poster_path} id={movie.id} />
-              <VStack p={2} alignItems={'start'} gap={1}>
-                <Text
-                  onClick={() => {
-                    navigate(`/movie/${movie.id}`)
-                  }}
-                  cursor={'pointer'}
-                  fontWeight={600}
-                  fontSize={['sm', 'sm', 'md']}
-                  transition={'opacity .3s'}
-                  _hover={{
-                    opacity: 0.6
-                  }}
-                >
-                  {traditionalized(movie.title)}
-                </Text>
-                <Text fontSize='xs'>平均分數：{(movie.vote_average)}</Text>
-              </VStack>
-            </GridItem>
+              id={movie.id}
+              posterPath={movie.poster_path}
+              title={movie.title}
+              voteAverage={movie.vote_average}
+            />
           )
         })}
       </SimpleGrid>
