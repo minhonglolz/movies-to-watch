@@ -9,6 +9,7 @@ import { MovieIntroduction } from './MovieIntroduction'
 import { MovieLinks } from './MovieLinks'
 import { MovieDirectors } from './MovieDirectors'
 import { MovieSeriesCast } from './MovieSeriesCast'
+import { MovieReviews } from './MovieReviews'
 
 export function MovieInfo () {
   const { id } = useParams()
@@ -50,7 +51,7 @@ export function MovieInfo () {
         <Button>加入待看清單</Button>
       </Flex>
       {(movieDetail && movieCredits)
-        ? <>
+        ? <Flex flexDirection={'column'} gap={6}>
           <MovieIntroduction
             posterPath={movieDetail.poster_path}
             title={movieDetail.title}
@@ -66,7 +67,8 @@ export function MovieInfo () {
           />
           <MovieDirectors movieCreditsCrew={movieCredits.crew} />
           <MovieSeriesCast movieCreditsCast={movieCredits.cast} />
-        </>
+          <MovieReviews />
+        </Flex>
         : <></>
     }
     </>

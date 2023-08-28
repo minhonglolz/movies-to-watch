@@ -1,4 +1,4 @@
-import { Flex, HStack, Button, Avatar, Text, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react'
+import { Flex, HStack, Button, Avatar, Text, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { MAX_DISPLAY_CAST, PEOPLE_IMAGE_URL_X1 } from '../../constants/movies'
 import { type MovieCredits } from '../../types/Discoverd/Movies'
@@ -21,10 +21,10 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
 
   return (
     <>
-      <Flex w={'100%'} flexDirection={'column'} mt={6}>
+      <Flex w={'100%'} flexDirection={'column'}>
         <HStack mb={6}>
           <Text fontWeight={800} fontSize={['lg', 'xl']}>演員陣容</Text>
-          <Button onClick={onOpen}>查看全部</Button>
+          <Button variant={'outline'} onClick={onOpen}>查看全部</Button>
         </HStack>
         <Flex overflowX={'scroll'} gap={4}>
           <HStack>

@@ -65,7 +65,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
       size={isLargerThanLg ? 'sm' : 'full'}
     >
       <DrawerOverlay />
-      <DrawerContent my={4}>
+      <DrawerContent my={0}>
         <DrawerHeader display={'flex'} alignItems={'center'}>
           <Text>搜尋</Text>
           <Spacer />
@@ -183,7 +183,6 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
             </Slider>
           </Flex>
         </DrawerBody>
-
         <DrawerFooter borderTopWidth='1px'>
           <Button variant='outline' mr={3} onClick={handleCancel}>
             取消
