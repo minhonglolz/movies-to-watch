@@ -31,3 +31,4 @@ export const POSTER_IMAGE_URL_X3 = 'https://www.themoviedb.org/t/p/w600_and_h900
 export const PEOPLE_IMAGE_URL_X1 = 'https://www.themoviedb.org/t/p/w150_and_h150_face/'
 
 export const MAX_DISPLAY_CAST = 10
+export const MAX_DISPLAY_REVIEWS = 3

@@ -92,3 +92,24 @@ export interface MovieCredits {
     job: string
   }>
 }
+
+export interface MovieReviewsParams extends Record<string, unknown> {
+  language: 'zh-TW'
+  page: number
+}
+export interface MovieReview {
+  author: string
+  author_details: {
+    name: string
+    username: string
+    avatar_path?: string
+    rating: number
+  }
+  content: string
+  created_at: string
+  id: string
+  updated_at: string
+  url: string
+}
+
+export type MovieReviewsResponse = TMDBListResponse<MovieReview>
