@@ -17,7 +17,7 @@ export function Poster ({ posterUrl, id }: Props) {
   const theme = useTheme()
 
   const imageProps = {
-    onClick: () => navigate(`movie/${id}`),
+    onClick: () => navigate(`/movie/${id}`),
     cursor: 'pointer'
   }
 

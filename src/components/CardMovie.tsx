@@ -1,4 +1,4 @@
-import { GridItem, VStack, theme, useColorModeValue, Text } from '@chakra-ui/react'
+import { GridItem, VStack, useColorModeValue, Text, useTheme } from '@chakra-ui/react'
 import { traditionalized } from '../utils/traditionalized'
 import { Poster } from './Discover/Poster'
 import { useNavigate } from 'react-router-dom'
@@ -12,6 +12,7 @@ interface Props {
 }
 
 export function CardMovie ({ id, posterPath, title, voteAverage }: Props) {
+  const theme = useTheme()
   const cardBorderColor = useColorModeValue(theme.colors.gray[50], theme.colors.gray[500])
   const navigate = useNavigate()
   return (
@@ -26,9 +27,7 @@ export function CardMovie ({ id, posterPath, title, voteAverage }: Props) {
       <Poster posterUrl={posterPath} id={id} />
       <VStack p={2} alignItems={'start'} gap={1}>
         <Text
-          onClick={() => {
-            navigate(`/movie/${id}`)
-          }}
+          onClick={() => { navigate(`/movie/${id}`) }}
           cursor={'pointer'}
           fontWeight={600}
           fontSize={['sm', 'sm', 'md']}
