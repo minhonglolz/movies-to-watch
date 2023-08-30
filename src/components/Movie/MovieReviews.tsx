@@ -37,8 +37,8 @@ export function MovieReviews () {
     <Box>
       {isLoading
         ? <Stack>
-          {new Array(MAX_DISPLAY_REVIEWS).fill('').map((item) => (
-            <Skeleton key={item} h={'120px'} mb={3} isLoaded={false} />
+          {new Array(MAX_DISPLAY_REVIEWS).fill('').map((_item, index) => (
+            <Skeleton key={index} h={'120px'} mb={3} isLoaded={false} />
           ))}
         </Stack>
         : <>
@@ -52,7 +52,7 @@ export function MovieReviews () {
             ? <>
               <Flex flexDirection={'column'} gap={3}>
                 {displayReviews.map((review) => (
-                  <Card bg={cardBackground} boxShadow={'md'} border={cardBorder}>
+                  <Card key={review.id} bg={cardBackground} boxShadow={'md'} border={cardBorder}>
                     <CardBody py={2} px={4}>
                       <CardHeader as={HStack} p={3} pl={0}>
                         <Avatar

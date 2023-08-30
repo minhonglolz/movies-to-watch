@@ -1,6 +1,6 @@
 import { SearchIcon } from '@chakra-ui/icons'
 import { InputGroup, InputLeftElement, Input, SimpleGrid } from '@chakra-ui/react'
-import { useMemo, useRef } from 'react'
+import { type ChangeEvent, useMemo, useState } from 'react'
 import { type SearchMovieResponse, type SearchMovieParams } from '../../types/Search.ts/Search'
 import { getURLWithParams } from '../../utils/urlParams'
 import useSWR from 'swr'
@@ -19,13 +19,14 @@ export function Search () {
   const [searchParams] = useSearchParams()
   const query = searchParams.get('query') ?? ''
   const page = searchParams.get('page') == null ? 1 : Number(searchParams.get('page'))
-  const searchInputRef = useRef<HTMLInputElement>(null)
+  const [searchInput, setSearchInput] = useState(query)
   const { debounceCallback } = useDebounceCallback()
 
-  const handleChangeInput = () => {
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setSearchInput(value)
     debounceCallback(() => {
-      const inputQuery = searchInputRef.current?.value ?? ''
-      navigate(`/search${getSearchParams(inputQuery, 1)}`)
+      navigate(`/search${getSearchParams(value, 1)}`)
     }, 500)
   }
 
@@ -57,7 +58,7 @@ export function Search () {
           h={'40px'}
           borderRadius={'40px'}
           placeholder='搜尋電影'
-          ref={searchInputRef}
+          value={searchInput}
           onChange={handleChangeInput}
         />
       </InputGroup>

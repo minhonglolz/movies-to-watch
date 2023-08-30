@@ -3,6 +3,7 @@ import { traditionalized } from '../utils/traditionalized'
 import { Poster } from './Discover/Poster'
 import { useNavigate } from 'react-router-dom'
 import { type Movie } from '../types/Discoverd/Movies'
+import { truncateToDecimal } from '../utils/tmdb'
 
 interface Props {
   id: Movie['id']
@@ -38,7 +39,7 @@ export function CardMovie ({ id, posterPath, title, voteAverage }: Props) {
         >
           {traditionalized(title)}
         </Text>
-        <Text fontSize='xs'>平均分數：{(voteAverage)}</Text>
+        <Text fontSize='xs'>平均分數：{truncateToDecimal(voteAverage, 1)}</Text>
       </VStack>
     </GridItem>
   )

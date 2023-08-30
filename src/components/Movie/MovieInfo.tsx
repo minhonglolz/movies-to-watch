@@ -2,8 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { type MovieDetailParams, type MovieDetail, type MovieCredits } from '../../types/Discoverd/Movies'
 import { useEffect, useMemo } from 'react'
 import { getURLWithParams } from '../../utils/urlParams'
-import { Button, Flex, IconButton } from '@chakra-ui/react'
-import { ArrowBackIcon } from '@chakra-ui/icons'
+import { Button, Flex } from '@chakra-ui/react'
 import { useTmdbSWR } from '../../hooks/useTmdbSWR'
 import { MovieIntroduction } from './MovieIntroduction'
 import { MovieLinks } from './MovieLinks'
@@ -36,39 +35,33 @@ export function MovieInfo () {
       navigate('/404')
     }
   }, [movieCreditsError?.success, movieDetailError?.success, navigate])
-
   return (
     <>
-      <Flex justifyContent={'space-between'}>
-        <IconButton
-          variant={'outline'}
-          onClick={() => navigate('/')}
-          aria-label='back icon'
-          icon={<ArrowBackIcon />}
-          alignSelf={'flex-start'}
-          mb={6}
-        />
-        <Button>加入待看清單</Button>
-      </Flex>
+
       {(movieDetail && movieCredits)
-        ? <Flex flexDirection={'column'} gap={6}>
-          <MovieIntroduction
-            posterPath={movieDetail.poster_path}
-            title={movieDetail.title}
-            releaseDate={movieDetail.release_date}
-            genres={movieDetail.genres}
-            overview={movieDetail.overview}
-            runtime={movieDetail.runtime}
-            voteAverage={movieDetail.vote_average}
-          />
-          <MovieLinks
-            homepage={movieDetail.homepage}
-            imdbId={movieDetail.imdb_id}
-          />
-          <MovieDirectors movieCreditsCrew={movieCredits.crew} />
-          <MovieSeriesCast movieCreditsCast={movieCredits.cast} />
-          <MovieReviews />
-        </Flex>
+        ? <>
+          <Flex justifyContent={'flex-end'} mb={4}>
+            <Button>加入待看清單</Button>
+          </Flex>
+          <Flex flexDirection={'column'} gap={6}>
+            <MovieIntroduction
+              posterPath={movieDetail.poster_path}
+              title={movieDetail.title}
+              releaseDate={movieDetail.release_date}
+              genres={movieDetail.genres}
+              overview={movieDetail.overview}
+              runtime={movieDetail.runtime}
+              voteAverage={movieDetail.vote_average}
+            />
+            <MovieLinks
+              homepage={movieDetail.homepage}
+              imdbId={movieDetail.imdb_id}
+            />
+            <MovieDirectors movieCreditsCrew={movieCredits.crew} />
+            <MovieSeriesCast movieCreditsCast={movieCredits.cast} />
+            <MovieReviews />
+          </Flex>
+        </>
         : <></>
     }
     </>

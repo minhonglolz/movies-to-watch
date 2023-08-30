@@ -57,7 +57,7 @@ export interface MovieDetail {
   release_date: string
   title: string
   runtime: number
-  vote_average: string
+  vote_average: number
   vote_count: string
   genres: Array<{
     id: number

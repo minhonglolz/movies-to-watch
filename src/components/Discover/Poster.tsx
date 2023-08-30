@@ -24,10 +24,13 @@ export function Poster ({ posterUrl, id }: Props) {
   return (
     <Box overflow={'hidden'} borderTopRadius={'12px'}>
       {posterUrl != null
-        ? <Image
+        ? <AspectRatio ratio={2 / 3}>
+          <Image
             {...imageProps}
             opacity={isLoad ? 1 : 0}
-            h={isLoad ? 'auto' : [150, 180, 320]}
+            w={'full'}
+            h={'full'}
+            objectFit={'cover'}
             backgroundColor={theme.colors.gray[900]}
             transition={'opacity .5s'}
             onLoad={() => setIsLoad(true)}
@@ -36,6 +39,7 @@ export function Poster ({ posterUrl, id }: Props) {
             }}
             src={`${isLargerThanLg ? POSTER_IMAGE_URL_X2 : POSTER_IMAGE_URL_X1}${posterUrl}`}
           />
+        </AspectRatio>
         : <AspectRatio ratio={2 / 3}>
           <Image
             {...imageProps}
