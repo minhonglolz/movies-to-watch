@@ -24,6 +24,7 @@ jobs:
         env:
           VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
           VITE_TMDB_API_ROOT: ${{ secrets.VITE_TMDB_API_ROOT }}
+          VITE_FIREBASE_CONFIG: ${{ secrets.VITE_FIREBASE_CONFIG }}
    
         run: |
           pnpm install --frozen-lockfile
