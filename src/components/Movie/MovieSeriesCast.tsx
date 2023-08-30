@@ -48,9 +48,8 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
           <ModalBody>
             <Flex flexDirection={'column'} gap={2}>
               {movieCreditsCast.map((cast) => (
-                <HStack>
+                <HStack key={cast.id}>
                   <Avatar
-                    key={cast.id}
                     name={cast.name}
                     borderRadius='full'
                     boxSize={['50px', '65px', '80px']}
