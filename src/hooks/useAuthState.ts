@@ -6,6 +6,7 @@ import { useToast } from '@chakra-ui/react'
 interface Auth {
   name: string | null
   photoURL: string | null
+  uid: string | null
 }
 
 export function useAuthState () {
@@ -18,6 +19,7 @@ export function useAuthState () {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setGoogleAuth({
+          uid: user.uid,
           name: user.displayName,
           photoURL: user.photoURL
         })
