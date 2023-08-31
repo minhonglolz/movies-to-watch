@@ -16,6 +16,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@firebase/auth": "^1.3.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "chakra-react-select": "^4.7.0",
     "dayjs": "^1.11.9",
@@ -26,6 +27,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
     "sort-by": "^1.2.0",
     "swr": "^2.2.1"
