@@ -113,3 +113,12 @@ export interface MovieReview {
 }
 
 export type MovieReviewsResponse = TMDBListResponse<MovieReview>
+
+export interface FirebaseMovie {
+  id: Movie['id']
+  title: Movie['title']
+  voteAverage: Movie['vote_average']
+  posterPath: Movie['poster_path']
+  overview: Movie['overview']
+  sort: number
+}
