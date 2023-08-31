@@ -6,11 +6,16 @@ import { useNavigate } from 'react-router-dom'
 import { type Movie } from '../../types/Discoverd/Movies'
 
 interface Props {
-  posterUrl?: string
   id: Movie['id']
+  posterPath: Movie['poster_path']
+  title: Movie['title']
+  voteAverage: Movie['vote_average']
+  overview: Movie['overview']
 }
 
-export function Poster ({ posterUrl, id }: Props) {
+export function Poster (props: Props) {
+  const { posterPath, id } = props
+
   const [isLargerThanLg] = useMediaQuery('(min-width: 960px)')
   const [isLoad, setIsLoad] = useState(false)
   const navigate = useNavigate()
@@ -23,7 +28,7 @@ export function Poster ({ posterUrl, id }: Props) {
 
   return (
     <Box overflow={'hidden'} borderTopRadius={'12px'}>
-      {posterUrl != null
+      {posterPath != null
         ? <AspectRatio ratio={2 / 3}>
           <Image
             {...imageProps}
@@ -34,10 +39,8 @@ export function Poster ({ posterUrl, id }: Props) {
             backgroundColor={theme.colors.gray[900]}
             transition={'opacity .5s'}
             onLoad={() => setIsLoad(true)}
-            _hover={{
-              opacity: 0.6
-            }}
-            src={`${isLargerThanLg ? POSTER_IMAGE_URL_X2 : POSTER_IMAGE_URL_X1}${posterUrl}`}
+            _hover={{ opacity: 0.6 }}
+            src={`${isLargerThanLg ? POSTER_IMAGE_URL_X2 : POSTER_IMAGE_URL_X1}${posterPath}`}
           />
         </AspectRatio>
         : <AspectRatio ratio={2 / 3}>

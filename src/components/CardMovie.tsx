@@ -1,21 +1,32 @@
-import { GridItem, VStack, useColorModeValue, Text, useTheme } from '@chakra-ui/react'
+import { GridItem, useColorModeValue, Text, useTheme, Grid } from '@chakra-ui/react'
 import { traditionalized } from '../utils/traditionalized'
 import { Poster } from './Discover/Poster'
 import { useNavigate } from 'react-router-dom'
 import { type Movie } from '../types/Discoverd/Movies'
 import { truncateToDecimal } from '../utils/tmdb'
+import { useSelector } from 'react-redux'
+import { type RootState } from '../store'
+import { useWatchList } from '../hooks/useWatchList'
+import { ButtonIconHeartToggle } from './ButtonIconHeartToggle'
 
 interface Props {
   id: Movie['id']
   posterPath: Movie['poster_path']
   title: Movie['title']
   voteAverage: Movie['vote_average']
+  overview: Movie['overview']
 }
 
-export function CardMovie ({ id, posterPath, title, voteAverage }: Props) {
+export function CardMovie (props: Props) {
+  const { id, title, voteAverage } = props
   const theme = useTheme()
   const cardBorderColor = useColorModeValue(theme.colors.gray[50], theme.colors.gray[500])
   const navigate = useNavigate()
+  const { watchListIdSet } = useSelector((state: RootState) => state.watchList)
+  const hasWatchListId = !!watchListIdSet?.has(id)
+
+  const { addWatchList, removeWatchList, isLoading } = useWatchList()
+
   return (
     <GridItem
       key={id}
@@ -25,22 +36,36 @@ export function CardMovie ({ id, posterPath, title, voteAverage }: Props) {
       display={'flex'}
       flexDirection={'column'}
     >
-      <Poster posterUrl={posterPath} id={id} />
-      <VStack p={2} alignItems={'start'} gap={1}>
-        <Text
-          onClick={() => { navigate(`/movie/${id}`) }}
-          cursor={'pointer'}
-          fontWeight={600}
-          fontSize={['sm', 'sm', 'md']}
-          transition={'opacity .3s'}
-          _hover={{
-            opacity: 0.6
+      <Poster {...props} />
+      <Grid templateColumns='repeat(8, 1fr)' py={4} px={2}>
+        <GridItem colSpan={7} w={'full'} alignItems={'start'} gap={1}>
+          <Text
+            onClick={() => { navigate(`/movie/${id}`) }}
+            cursor={'pointer'}
+            fontWeight={600}
+            fontSize={['sm', 'sm', 'md']}
+            transition={'opacity .3s'}
+            _hover={{
+              opacity: 0.6
+            }}
+          >
+            {traditionalized(title)}
+          </Text>
+          <Text fontSize='xs'>平均分數：{truncateToDecimal(voteAverage, 1)}</Text>
+        </GridItem>
+        <ButtonIconHeartToggle
+          isFill={hasWatchListId}
+          colSpan={1}
+          onClick={() => {
+            if (isLoading) return
+            if (hasWatchListId) {
+              removeWatchList(id)
+            } else {
+              addWatchList(props)
+            }
           }}
-        >
-          {traditionalized(title)}
-        </Text>
-        <Text fontSize='xs'>平均分數：{truncateToDecimal(voteAverage, 1)}</Text>
-      </VStack>
+        />
+      </Grid>
     </GridItem>
   )
 }

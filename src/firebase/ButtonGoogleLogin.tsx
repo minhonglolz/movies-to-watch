@@ -1,45 +1,39 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { Button, useToast } from '@chakra-ui/react'
+import { Button, type ButtonProps } from '@chakra-ui/react'
 import { auth, database } from './firebase'
 import { set, ref, get } from 'firebase/database'
+import { useToast } from '../hooks/useToast'
 
-export function ButtonGoogleLogin () {
-  const toast = useToast()
+type Props = ButtonProps & {
+  action?: () => void
+}
+
+export function ButtonGoogleLogin ({ action, ...props }: Props) {
+  const { showErrorToast, showSuccessToast } = useToast()
   const signInWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider()
       const result = await signInWithPopup(auth, provider)
-      const user = result.user
-      const userRef = ref(database, `users/${user.uid}`)
+      const { uid, displayName, photoURL } = result.user
+      const userRef = ref(database, `users/${uid}`)
       const snapshot = await get(userRef)
 
       if (!snapshot.exists()) {
         await set(userRef, {
-          username: user.displayName,
-          profilePicture: user.photoURL
+          username: displayName,
+          profilePicture: photoURL
         })
       }
-
-      toast({
-        title: '登入成功',
-        position: 'top-right',
-        status: 'success',
-        duration: 1000,
-        isClosable: true
-      })
+      showSuccessToast('登入成功')
     } catch (error) {
       console.error('Google 登入時出錯:', error)
-      toast({
-        title: '登入失敗',
-        position: 'top-right',
-        status: 'error',
-        duration: 1000,
-        isClosable: true
-      })
+      showErrorToast('登入失敗')
+    } finally {
+      action?.()
     }
   }
 
   return (
-    <Button onClick={signInWithGoogle} variant={'unstyled'}>登入</Button>
+    <Button onClick={signInWithGoogle} variant={'unstyled'} {...props}>登入</Button>
   )
 }

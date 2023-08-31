@@ -71,6 +71,7 @@ export function Search () {
               posterPath={movie.poster_path}
               title={movie.title}
               voteAverage={movie.vote_average}
+              overview={movie.overview}
             />
           )
         })}
