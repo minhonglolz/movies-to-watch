@@ -1,7 +1,9 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { auth } from '../firebase/firebase'
-import { useToast } from '@chakra-ui/react'
+import { useDispatch } from 'react-redux'
+import { clearWatchList } from '../models/watchList'
+import { useToast } from './useToast'
 
 interface Auth {
   name: string | null
@@ -12,7 +14,8 @@ interface Auth {
 export function useAuthState () {
   const [googleAuth, setGoogleAuth] = useState<Auth>()
   const [isLoaded, setIsLoaded] = useState(false)
-  const toast = useToast()
+  const { showErrorToast, showSuccessToast } = useToast()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setIsLoaded(false)
@@ -34,22 +37,11 @@ export function useAuthState () {
   const signOut = async () => {
     try {
       await auth.signOut()
-      toast({
-        title: '登出成功',
-        position: 'top-right',
-        status: 'success',
-        duration: 1000,
-        isClosable: true
-      })
+      showSuccessToast('登出成功')
+      dispatch(clearWatchList())
     } catch (error) {
       console.warn(error)
-      toast({
-        title: '登出失敗',
-        position: 'top-right',
-        status: 'error',
-        duration: 1000,
-        isClosable: true
-      })
+      showErrorToast('登出失敗')
     }
   }
 

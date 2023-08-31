@@ -21,10 +21,14 @@ export const watchList = createSlice({
       state.watchListIdSet = action.payload?.reduce<Set<Movie['id']>>((acc, prev) => {
         return acc.add(prev.id)
       }, new Set()) ?? new Set()
+    },
+    clearWatchList: (state) => {
+      state.watchList = initialState.watchList
+      state.watchListIdSet = initialState.watchListIdSet
     }
   }
 })
 
-export const { setWatchList } = watchList.actions
+export const { setWatchList, clearWatchList } = watchList.actions
 
 export default watchList.reducer
