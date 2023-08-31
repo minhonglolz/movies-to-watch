@@ -7,7 +7,9 @@ import { truncateToDecimal } from '../utils/tmdb'
 import { useSelector } from 'react-redux'
 import { type RootState } from '../store'
 import { useWatchList } from '../hooks/useWatchList'
-import { ButtonIconHeartToggle } from './ButtonIconHeartToggle'
+import ButtonIconHeartToggle from './ButtonIconHeartToggle'
+import { useAuthState } from '../hooks/useAuthState'
+import { useToast } from '../hooks/useToast'
 
 interface Props {
   id: Movie['id']
@@ -26,7 +28,21 @@ export function CardMovie (props: Props) {
   const hasWatchListId = !!watchListIdSet?.has(id)
 
   const { addWatchList, removeWatchList, isLoading } = useWatchList()
+  const { googleAuth } = useAuthState()
+  const { showErrorToast } = useToast()
 
+  const handleClickToggleWatchList = () => {
+    if (!googleAuth) {
+      showErrorToast('為了記住您的待看清單，請先登入')
+      return
+    }
+    if (isLoading) return
+    if (hasWatchListId) {
+      removeWatchList(id)
+    } else {
+      addWatchList(props)
+    }
+  }
   return (
     <GridItem
       key={id}
@@ -56,14 +72,7 @@ export function CardMovie (props: Props) {
         <ButtonIconHeartToggle
           isFill={hasWatchListId}
           colSpan={1}
-          onClick={() => {
-            if (isLoading) return
-            if (hasWatchListId) {
-              removeWatchList(id)
-            } else {
-              addWatchList(props)
-            }
-          }}
+          onClick={handleClickToggleWatchList}
         />
       </Grid>
     </GridItem>
