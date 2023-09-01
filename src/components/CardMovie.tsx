@@ -48,7 +48,7 @@ export function CardMovie (props: Props) {
       key={id}
       borderRadius={12}
       border={`.5px solid ${cardBorderColor}`}
-      shadow={'2xl'}
+      shadow={'lg'}
       display={'flex'}
       flexDirection={'column'}
     >
