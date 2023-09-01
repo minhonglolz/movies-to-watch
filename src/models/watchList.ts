@@ -1,15 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { type FirebaseMovie, type Movie } from '../types/Discoverd/Movies'
 
 export interface WatchListState {
   watchList: FirebaseMovie[] | null
-  watchListIdSet: Set<Movie['id']> | null
+  watchListIdMap: Map<Movie['id'], FirebaseMovie> | null
+  sortedWatchList: FirebaseMovie[] | null
+
 }
 
 const initialState: WatchListState = {
   watchList: null,
-  watchListIdSet: new Set()
+  watchListIdMap: new Map(),
+  sortedWatchList: null
 }
 
 export const watchList = createSlice({
@@ -18,17 +20,23 @@ export const watchList = createSlice({
   reducers: {
     setWatchList: (state, action: PayloadAction<WatchListState['watchList']>) => {
       state.watchList = action.payload
-      state.watchListIdSet = action.payload?.reduce<Set<Movie['id']>>((acc, prev) => {
-        return acc.add(prev.id)
-      }, new Set()) ?? new Set()
+
+      state.watchListIdMap = action.payload?.reduce<Map<Movie['id'], FirebaseMovie>>((acc, prev) => {
+        return acc.set(prev.id, prev)
+      }, new Map()) ?? new Map()
     },
     clearWatchList: (state) => {
       state.watchList = initialState.watchList
-      state.watchListIdSet = initialState.watchListIdSet
+      state.watchListIdMap = initialState.watchListIdMap
+    },
+    setMovieSort: (state, action: PayloadAction<{ id: FirebaseMovie['id'], sort: FirebaseMovie['sort'] }>) => {
+      const draft = state.watchList?.find(({ id }) => id === action.payload.id)
+      if (!draft) return
+      draft.sort = action.payload.sort
     }
   }
 })
 
-export const { setWatchList, clearWatchList } = watchList.actions
+export const { setWatchList, clearWatchList, setMovieSort } = watchList.actions
 
 export default watchList.reducer

@@ -24,7 +24,7 @@ export function CardMovie (props: Props) {
   const theme = useTheme()
   const cardBorderColor = useColorModeValue(theme.colors.gray[50], theme.colors.gray[500])
   const navigate = useNavigate()
-  const { watchListIdSet } = useSelector((state: RootState) => state.watchList)
+  const { watchListIdMap: watchListIdSet } = useSelector((state: RootState) => state.watchList)
   const hasWatchListId = !!watchListIdSet?.has(id)
 
   const { addWatchList, removeWatchList, isLoading } = useWatchList()
