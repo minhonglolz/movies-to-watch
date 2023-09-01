@@ -5,22 +5,23 @@ import { NotFound } from './NotFound'
 import { Home } from './Home/Home'
 import { MovieInfo } from './Movie/MovieInfo'
 import { Search } from './Search/Search'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      { path: '', element: <Home /> },
-      { path: 'movie/:id', element: <MovieInfo /> },
-      { path: 'watch-list', element: <WatchList /> },
-      { path: 'search', element: <Search /> },
-      { path: '*', element: <NotFound /> }
-    ]
-  }
-])
+import { useAuthState } from '../hooks/useAuthState'
 
 export function Routes () {
+  const { googleAuth, isLoaded } = useAuthState()
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <App />,
+      children: [
+        { path: '', element: <Home /> },
+        { path: 'movie/:id', element: <MovieInfo /> },
+        { path: 'watch-list', element: googleAuth ? <WatchList /> : isLoaded ? <NotFound /> : <></> },
+        { path: 'search', element: <Search /> },
+        { path: '*', element: <NotFound /> }
+      ]
+    }
+  ])
   return (
     <RouterProvider router={router} />
   )
