@@ -19,7 +19,7 @@ export const watchList = createSlice({
   initialState,
   reducers: {
     setWatchList: (state, action: PayloadAction<WatchListState['watchList']>) => {
-      state.watchList = action.payload
+      state.watchList = action.payload?.sort((a, b) => a.sort - b.sort) ?? null
 
       state.watchListIdMap = action.payload?.reduce<Map<Movie['id'], FirebaseMovie>>((acc, prev) => {
         return acc.set(prev.id, prev)
