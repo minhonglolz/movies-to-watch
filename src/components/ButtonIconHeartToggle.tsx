@@ -1,4 +1,4 @@
-import { GridItem, Tooltip, type GridItemProps, forwardRef } from '@chakra-ui/react'
+import { GridItem, Tooltip, type GridItemProps, forwardRef, useColorModeValue } from '@chakra-ui/react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 type Props = GridItemProps & {
@@ -6,6 +6,7 @@ type Props = GridItemProps & {
 }
 
 function ButtonIconHeartToggle ({ isFill, ...props }: Props, ref: unknown) {
+  const color = useColorModeValue('block', 'white')
   return (
     <Tooltip label={isFill ? '移除待看清單' : '加入待看清單'} fontSize='md'>
       <GridItem
@@ -18,7 +19,7 @@ function ButtonIconHeartToggle ({ isFill, ...props }: Props, ref: unknown) {
         aria-label={'more icon'}
         zIndex={1}
         fontSize={'20px'}
-        color={'MenuText'}
+        color={color}
         opacity={0.8}
         cursor={'pointer'}
         _hover={{ opacity: 1 }}
