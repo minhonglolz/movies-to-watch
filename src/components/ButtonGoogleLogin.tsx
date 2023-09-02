@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { Button, type ButtonProps } from '@chakra-ui/react'
-import { auth, database } from './firebase'
+import { auth, database } from '../firebase/firebase'
 import { set, ref, get } from 'firebase/database'
 import { useToast } from '../hooks/useToast'
 
