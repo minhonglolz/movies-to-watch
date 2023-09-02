@@ -1,4 +1,4 @@
-import { Flex, Heading, Spacer, IconButton, useDisclosure, SimpleGrid } from '@chakra-ui/react'
+import { Flex, IconButton, useDisclosure, SimpleGrid } from '@chakra-ui/react'
 import useSWR from 'swr'
 import { tmdbSWRFetcher } from '../../utils/swrFetcher'
 import { getURLWithParams } from '../../utils/urlParams'
@@ -8,6 +8,7 @@ import { BiFilterAlt } from 'react-icons/bi'
 import { DrawerMoviesFilter } from './DrawerMoviesFilter'
 import { MOVIES_INIT_FILTER } from '../../constants/movies'
 import { CardMovie } from '../CardMovie'
+import { PageTitle } from '../PageTitle'
 
 export function Movies () {
   const [filter, setFilter] = useState<DiscoverMovieParams>(MOVIES_INIT_FILTER)
@@ -31,9 +32,8 @@ export function Movies () {
 
   return (
     <Flex flexDirection={'column'}>
-      <Flex mb={4}>
-        <Heading fontSize={'xl'}>時下熱門</Heading>
-        <Spacer />
+      <Flex mb={4} alignItems={'center'} justifyContent={'space-between'}>
+        <PageTitle>時下熱門</PageTitle>
         <IconButton
           onClick={onOpen}
           variant={'ghost'}

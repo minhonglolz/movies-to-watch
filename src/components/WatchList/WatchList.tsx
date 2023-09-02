@@ -1,12 +1,13 @@
-import { Button, Flex, Heading, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Stack, VStack } from '@chakra-ui/react'
+import { Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Stack, VStack } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { type RootState } from '../../store'
 import { useWatchList } from '../../hooks/useWatchList'
 import { DragDropContext, Droppable, type DropResult } from 'react-beautiful-dnd'
 import { useCallback } from 'react'
 import { DraggableMovie } from './DraggableMovie'
-import { ChevronDownIcon } from '@chakra-ui/icons'
 import { MOVIES_SORT_BY_OPTIONS } from '../../constants/movies'
+import { PageTitle } from '../PageTitle'
+import { BiFilterAlt } from 'react-icons/bi'
 
 const calculateDragToFirstSort = (firstSort: number) => firstSort / 2
 const calculateDragToLastSort = (lastSort: number) => lastSort + 1
@@ -47,11 +48,14 @@ export function WatchList () {
       {watchList
         ? <>
           <Flex justifyContent={'space-between'} alignItems={'center'} mb={4}>
-            <Heading fontSize={'xl'}>我的待看清單（{watchList.length}）</Heading>
+            <PageTitle>我的待看清單（{watchList.length}）</PageTitle>
             <Menu>
-              <MenuButton size={'sm'} as={Button} rightIcon={<ChevronDownIcon />}>
-                排序
-              </MenuButton>
+              <MenuButton
+                as={IconButton}
+                variant={'ghost'}
+                aria-label='Filter database'
+                icon={<BiFilterAlt />}
+              />
               <MenuList>
                 {MOVIES_SORT_BY_OPTIONS.map((option) => (
                   <MenuItem key={option.value} onClick={async () => await sortMovieList(option.value)}>{option.label}</MenuItem>
@@ -64,7 +68,6 @@ export function WatchList () {
               {(provided) => (
                 <VStack
                   spacing={4}
-                  py={4}
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
