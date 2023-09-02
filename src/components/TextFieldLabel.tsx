@@ -5,6 +5,6 @@ type Props = TextProps & {
 }
 export function TextFieldLabel ({ value, ...props }: Props) {
   return (
-    <Text fontWeight={'600'} mb={1} {...props}>{value}</Text>
+    <Text fontWeight="600" mb={1} {...props}>{value}</Text>
   )
 }

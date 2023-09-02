@@ -21,12 +21,12 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
 
   return (
     <>
-      <Flex w={'100%'} flexDirection={'column'}>
+      <Flex w="100%" flexDirection="column">
         <HStack mb={6}>
           <Text fontWeight={800} fontSize={['lg', 'xl']}>演員陣容</Text>
-          <Button variant={'outline'} onClick={onOpen}>查看全部</Button>
+          <Button variant="outline" onClick={onOpen}>查看全部</Button>
         </HStack>
-        <Flex overflowX={'scroll'} gap={4}>
+        <Flex overflowX="scroll" gap={4}>
           <HStack>
             {displayMovieCast.map((director) => (
               <Avatar
@@ -46,7 +46,7 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
           <ModalHeader>演員陣容</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Flex flexDirection={'column'} gap={2}>
+            <Flex flexDirection="column" gap={2}>
               {movieCreditsCast.map((cast) => (
                 <HStack key={cast.id}>
                   <Avatar

@@ -11,16 +11,16 @@ function ButtonIconHeartToggle ({ isFill, ...props }: Props, ref: unknown) {
     <Tooltip label={isFill ? '移除待看清單' : '加入待看清單'} fontSize='md'>
       <GridItem
         ref={ref}
-        mt={'2px'}
-        borderRadius={'20px'}
-        w={'20px'}
-        h={'20px'}
-        aria-label={'more icon'}
+        mt="2px"
+        borderRadius="20px"
+        w="20px"
+        h="20px"
+        aria-label="more icon"
         zIndex={1}
-        fontSize={'20px'}
+        fontSize="20px"
         color={color}
         opacity={0.8}
-        cursor={'pointer'}
+        cursor="pointer"
         _hover={{ opacity: 1 }}
         {...props}
       >

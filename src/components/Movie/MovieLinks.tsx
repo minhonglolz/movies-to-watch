@@ -10,7 +10,7 @@ interface Props {
 export function MovieLinks ({ homepage, imdbId }: Props) {
   return (
     <Flex gap={2}>
-      {homepage && <Button as={'a'} href={homepage}>官方網站</Button>}
+      {homepage && <Button as="a" href={homepage}>官方網站</Button>}
       {imdbId &&
         <Link isExternal href={`https://www.imdb.com/title/${imdbId}`}>
           <Button leftIcon={<FaImdb />}>IMDB</Button>

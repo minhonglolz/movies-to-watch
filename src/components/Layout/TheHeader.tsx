@@ -21,9 +21,9 @@ export function TheHeader () {
     navigate('/watch-list')
   }
   return (
-    <Box p={4} pt={8} w='full' position={'relative'}>
+    <Box p={4} pt={8} w='full' position="relative">
       <Flex justifyContent='space-between' alignItems='center' gap={4}>
-        <Button mr='auto' fontSize='4xl' fontWeight='800' variant='unstyled' display={'flex'}>
+        <Button mr='auto' fontSize='4xl' fontWeight='800' variant='unstyled' display="flex">
           <Link to='/'><Image src={PopcornIcon} /></Link>
         </Button>
         <Button variant='unstyled' onClick={handleClickWatchListButton}>
@@ -35,7 +35,7 @@ export function TheHeader () {
             <MenuButton
               as={Avatar}
               aria-label='user'
-              size={'sm'}
+              size="sm"
               name={googleAuth.name ?? 'U'}
               src={googleAuth.photoURL ?? undefined}
             />
@@ -48,11 +48,11 @@ export function TheHeader () {
           : <ButtonGoogleLogin />)}
         <ThemeToggle />
         <IconButton
-          display={'inline-flex'}
+          display="inline-flex"
           onClick={() => { navigate('/search') }}
-          variant={'unstyled'}
+          variant="unstyled"
           icon={<SearchIcon />}
-          aria-label={'search'}
+          aria-label="search"
           background='none'
         />
       </Flex>

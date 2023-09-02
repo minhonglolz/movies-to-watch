@@ -11,7 +11,7 @@ export function TheFooter () {
           <Link target='_blank' to='https://minhong.me'>minhong.me</Link>
         </Text>
       </HStack>
-      <Flex gap={'4'} justifyContent='center' alignItems={'center'}>
+      <Flex gap="4" justifyContent='center' alignItems="center">
         <Text>Powered by</Text>
         <Link to="https://www.themoviedb.org/">
           <Image src={tmdbLogo} />

@@ -77,13 +77,13 @@ export function MovieInfo () {
 
       {(movieDetail && movieCredits)
         ? <>
-          <Flex justifyContent={'flex-end'} mb={4}>
+          <Flex justifyContent="flex-end" mb={4}>
             <ButtonIconHeartToggle
               isFill={hasWatchListId}
               onClick={handleClickToggleWatchList}
             />
           </Flex>
-          <Flex flexDirection={'column'} gap={6}>
+          <Flex flexDirection="column" gap={6}>
             <MovieSynopsis
               posterPath={movieDetail.poster_path}
               title={movieDetail.title}

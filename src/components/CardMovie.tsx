@@ -51,19 +51,19 @@ export function CardMovie (props: Props) {
       key={id}
       borderRadius={12}
       border={`.5px solid ${cardBorderColor}`}
-      shadow={'lg'}
-      display={'flex'}
-      flexDirection={'column'}
+      shadow="lg"
+      display="flex"
+      flexDirection="column"
     >
       <Poster {...props} imageProps={{ borderTopRadius: '12px' }} />
       <Grid templateColumns='repeat(8, 1fr)' py={4} px={2}>
-        <GridItem colSpan={7} w={'full'} alignItems={'start'} gap={1}>
+        <GridItem colSpan={7} w="full" alignItems="start" gap={1}>
           <Text
             onClick={() => { navigate(`/movie/${id}`) }}
-            cursor={'pointer'}
+            cursor="pointer"
             fontWeight={600}
             fontSize={['sm', 'sm', 'md']}
-            transition={'opacity .3s'}
+            transition="opacity .3s"
             _hover={{
               opacity: 0.6
             }}

@@ -30,11 +30,11 @@ export function Poster ({ imageProps, ...movie }: Props) {
         ? <AspectRatio ratio={2 / 3}>
           <Image
             opacity={isLoad ? 1 : 0}
-            w={'full'}
-            h={'full'}
-            objectFit={'cover'}
+            w="full"
+            h="full"
+            objectFit="cover"
             backgroundColor={theme.colors.gray[900]}
-            transition={'opacity .5s'}
+            transition="opacity .5s"
             onLoad={() => setIsLoad(true)}
             _hover={{ opacity: 0.6 }}
             src={`${POSTER_IMAGE_URL_X2}${posterPath}`}
@@ -43,7 +43,7 @@ export function Poster ({ imageProps, ...movie }: Props) {
         </AspectRatio>
         : <AspectRatio ratio={2 / 3}>
           <Image
-            objectFit={'fill'}
+            objectFit="fill"
             src={noImage}
             {..._imageProps}
           />

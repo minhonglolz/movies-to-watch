@@ -44,15 +44,15 @@ export function WatchList () {
   }, [setMovieSort, watchList])
 
   return (
-    <Flex flexDirection={'column'}>
+    <Flex flexDirection="column">
       {watchList
         ? <>
-          <Flex justifyContent={'space-between'} alignItems={'center'} mb={4}>
+          <Flex justifyContent="space-between" alignItems="center" mb={4}>
             <PageTitle>我的待看清單（{watchList.length}）</PageTitle>
             <Menu>
               <MenuButton
                 as={IconButton}
-                variant={'ghost'}
+                variant="ghost"
                 aria-label='Filter database'
                 icon={<BiFilterAlt />}
               />
@@ -64,7 +64,7 @@ export function WatchList () {
             </Menu>
           </Flex>
           <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId={'droppableId'}>
+            <Droppable droppableId="droppableId">
               {(provided) => (
                 <VStack
                   spacing={4}
@@ -85,7 +85,7 @@ export function WatchList () {
           </DragDropContext>
         </>
         : <Stack spacing={4}>
-          <SkeletonText noOfLines={1} skeletonHeight='6' w={'200px'} />
+          <SkeletonText noOfLines={1} skeletonHeight='6' w="200px" />
           {new Array(3).fill('').map((_, index) => (
             <Skeleton key={index} height='200px' />
           ))}

@@ -38,37 +38,37 @@ export function MovieReviews () {
       {isLoading
         ? <Stack>
           {new Array(MAX_DISPLAY_REVIEWS).fill('').map((_item, index) => (
-            <Skeleton key={index} h={'120px'} mb={3} isLoaded={false} />
+            <Skeleton key={index} h="120px" mb={3} isLoaded={false} />
           ))}
         </Stack>
         : <>
           <HStack>
             <Text fontWeight={800} fontSize={['lg', 'xl']} mb={2}>評論</Text>
             {displayReviews.length > 3 && <Link isExternal href={`https://www.themoviedb.org/movie/${id}/reviews?language=zh-TW`}>
-              <Button mt={4} variant={'outline'}>查看全部評論</Button>
+              <Button mt={4} variant="outline">查看全部評論</Button>
             </Link>}
           </HStack>
           {hasReviews
             ? <>
-              <Flex flexDirection={'column'} gap={3}>
+              <Flex flexDirection="column" gap={3}>
                 {displayReviews.map((review) => (
-                  <Card key={review.id} bg={cardBackground} boxShadow={'md'} border={cardBorder}>
+                  <Card key={review.id} bg={cardBackground} boxShadow="md" border={cardBorder}>
                     <CardBody py={2} px={4}>
                       <CardHeader as={HStack} p={3} pl={0}>
                         <Avatar
                           as={Link}
                           name={review.author}
                           borderRadius='full'
-                          boxSize={'50px'}
+                          boxSize="50px"
                           src={`${PEOPLE_IMAGE_URL_X1}${review.author_details.avatar_path}`}
                           isExternal
                           href={getReviewerUrl(review.author)}
                         />
-                        <VStack alignItems={'flex-start'} gap={1}>
+                        <VStack alignItems="flex-start" gap={1}>
                           <HStack>
                             <Heading fontSize={['md', 'lg']}>
                               來自&ensp;
-                              <Link textDecoration={'underline'} isExternal href={getReviewerUrl(review.author)}>{review.author}</Link>
+                              <Link textDecoration="underline" isExternal href={getReviewerUrl(review.author)}>{review.author}</Link>
                             &ensp;的評論</Heading>
                             <Tag>評分：{review.author_details.rating}</Tag>
                           </HStack>

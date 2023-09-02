@@ -27,28 +27,28 @@ export function DraggableMovie ({ movie, index }: Props) {
         <HStack
           {...provided.draggableProps}
           ref={provided.innerRef}
-          w={'full'}
+          w="full"
           borderRadius={12}
           border={`.5px solid ${cardBorderColor}`}
-          shadow={'lg'}
+          shadow="lg"
           backgroundColor={cardBackground}
           opacity={snapshot.isDragging ? 0.8 : 1}
         >
           <Box minW={[130, 150]}>
             <Poster {...movie} imageProps={{ borderLeftRadius: '12px' }} />
           </Box>
-          <VStack w='full' align={'flex-start'} p={4}>
-            <Flex w={'full'} justifyContent={'space-between'} align={'center'}>
+          <VStack w='full' align="flex-start" p={4}>
+            <Flex w="full" justifyContent="space-between" align="center">
               <Heading fontSize={['md', 'xl']}>{movie.title}</Heading>
               <Box {...provided.dragHandleProps}>
-                <DragHandleIcon boxSize={'18px'} />
+                <DragHandleIcon boxSize="18px" />
               </Box>
             </Flex>
             <Text fontWeight={800} fontSize={['xs', 'sm']}>平均分數： {truncateToDecimal(movie.voteAverage, 1)} / 10</Text>
-            <Text mb={2} textAlign={'left'} noOfLines={2}>{traditionalized(movie.overview)}</Text>
+            <Text mb={2} textAlign="left" noOfLines={2}>{traditionalized(movie.overview)}</Text>
             <Button
-              size={'sm'}
-              variant={'outline'}
+              size="sm"
+              variant="outline"
               leftIcon={<DeleteIcon />}
               onClick={async () => await removeWatchList(movie.id)}
             >移除

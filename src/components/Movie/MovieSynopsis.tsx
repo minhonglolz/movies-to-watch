@@ -23,15 +23,15 @@ export function MovieSynopsis (props: Props) {
   const { id } = useParams()
 
   return (
-    <Flex direction={{ base: 'column', md: 'row' }} alignItems={'center'} gap={6}>
-      <Box minW={[200, 300]} borderRadius={12} overflow={'hidden'}>
+    <Flex direction={{ base: 'column', md: 'row' }} alignItems="center" gap={6}>
+      <Box minW={[200, 300]} borderRadius={12} overflow="hidden">
         <Poster id={Number(id)} posterPath={posterPath} />
       </Box>
-      <Flex direction={'column'} gap={4} textAlign={{ base: 'center', md: 'left' }}>
+      <Flex direction="column" gap={4} textAlign={{ base: 'center', md: 'left' }}>
         <Heading fontSize={['xl', '3xl']}>{title} {`(${dayjs(releaseDate).format('YYYY')})`}</Heading>
         <Text fontWeight={800} fontSize={['md', 'lg']}>平均分數： {truncateToDecimal(voteAverage, 1)} / 10</Text>
 
-        <Flex fontSize={['md', 'lg']} gap={2} flexDirection={'column'} alignItems={{ base: 'center', md: 'flex-start' }}>
+        <Flex fontSize={['md', 'lg']} gap={2} flexDirection="column" alignItems={{ base: 'center', md: 'flex-start' }}>
           <HStack gap={2}>
             <Tag>{dayjs(releaseDate).format('YYYY/MM/DD')}</Tag>
             <Tag>{convertToHourMinute(runtime)}</Tag>
@@ -43,7 +43,7 @@ export function MovieSynopsis (props: Props) {
           </HStack>
         </Flex>
 
-        <Text textAlign={'left'}>{overview}</Text>
+        <Text textAlign="left">{overview}</Text>
       </Flex>
     </Flex>
   )

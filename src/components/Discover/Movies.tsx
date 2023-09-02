@@ -31,12 +31,12 @@ export function Movies () {
   }
 
   return (
-    <Flex flexDirection={'column'}>
-      <Flex mb={4} alignItems={'center'} justifyContent={'space-between'}>
+    <Flex flexDirection="column">
+      <Flex mb={4} alignItems="center" justifyContent="space-between">
         <PageTitle>時下熱門</PageTitle>
         <IconButton
           onClick={onOpen}
-          variant={'ghost'}
+          variant="ghost"
           aria-label='Filter database'
           icon={<BiFilterAlt />}
         />

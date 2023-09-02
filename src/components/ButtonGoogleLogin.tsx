@@ -34,6 +34,6 @@ export function ButtonGoogleLogin ({ action, ...props }: Props) {
   }
 
   return (
-    <Button onClick={signInWithGoogle} variant={'unstyled'} {...props}>登入</Button>
+    <Button onClick={signInWithGoogle} variant="unstyled" {...props}>登入</Button>
   )
 }

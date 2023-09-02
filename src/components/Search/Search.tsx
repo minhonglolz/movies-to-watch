@@ -48,15 +48,15 @@ export function Search () {
 
   return (
     <>
-      <InputGroup h={'40px'} w='full'>
+      <InputGroup h="40px" w='full'>
         <InputLeftElement
           pl={4}
           pointerEvents="none"
           children={<SearchIcon className="SearchIcon" color="gray.300" />}
         />
         <Input
-          h={'40px'}
-          borderRadius={'40px'}
+          h="40px"
+          borderRadius="40px"
           placeholder='搜尋電影'
           value={searchInput}
           onChange={handleChangeInput}
