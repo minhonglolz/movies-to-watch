@@ -9,6 +9,8 @@ import { CardMovie } from '../CardMovie'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { Pagination } from '../Pagination'
 import { useDebounceCallback } from '../../hooks/useDebounceCallback'
+import { NoData } from '../NoData'
+import { SkeletonMovieList } from '../SkeletonMovieList'
 
 const getSearchParams = (query: string, page: number) => {
   return query ? `?query=${query}&page=${page}` : ''
@@ -40,7 +42,7 @@ export function Search () {
     return getURLWithParams('https://api.themoviedb.org/3/search/movie', params)
   }, [page, query])
 
-  const { data } = useSWR<SearchMovieResponse>(key, tmdbSWRFetcher, { revalidateOnFocus: false })
+  const { data, isLoading } = useSWR<SearchMovieResponse>(key, tmdbSWRFetcher, { revalidateOnFocus: false })
 
   const handleChangePage = (page: number) => {
     navigate(`/search${getSearchParams(query, page)}`)
@@ -62,30 +64,38 @@ export function Search () {
           onChange={handleChangeInput}
         />
       </InputGroup>
-      <SimpleGrid mt={6} gap={6} columns={[2, 4, 5]}>
-        {data?.results.map((movie) => {
-          return (
-            <CardMovie
-              key={movie.id}
-              id={movie.id}
-              posterPath={movie.poster_path}
-              title={movie.title}
-              voteAverage={movie.vote_average}
-              overview={movie.overview}
-              popularity={movie.popularity}
-              releaseDate={movie.release_date}
-              voteCount={movie.vote_count}
-            />
-          )
-        })}
-      </SimpleGrid>
-      {data?.total_pages &&
-        <Pagination
-          totalPages={data.total_pages}
-          currentPage={page}
-          onChangePage={handleChangePage}
-        />
-      }
+      {!isLoading
+        ? <>
+          <SimpleGrid mt={6} gap={6} columns={[2, 4, 5]}>
+            {data?.results.map((movie) => {
+              return (
+                <CardMovie
+                  key={movie.id}
+                  id={movie.id}
+                  posterPath={movie.poster_path}
+                  title={movie.title}
+                  voteAverage={movie.vote_average}
+                  overview={movie.overview}
+                  popularity={movie.popularity}
+                  releaseDate={movie.release_date}
+                  voteCount={movie.vote_count}
+                />
+              )
+            })}
+          </SimpleGrid>
+          {data?.total_results
+            ? <Pagination
+                totalResults={data.total_results}
+                totalPages={data.total_pages}
+                currentPage={page}
+                onChangePage={handleChangePage}
+              />
+            : <></>}
+          {data?.total_results === 0 &&
+            <NoData />}
+        </>
+        : <SkeletonMovieList />}
+
     </>
   )
 }
