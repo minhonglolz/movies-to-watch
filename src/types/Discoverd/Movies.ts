@@ -55,10 +55,11 @@ export interface MovieDetail {
   overview: string
   poster_path: string
   release_date: string
+  popularity: number
   title: string
   runtime: number
   vote_average: number
-  vote_count: string
+  vote_count: number
   genres: Array<{
     id: number
     name: string

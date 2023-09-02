@@ -41,7 +41,7 @@ export function useAuthState () {
       dispatch(clearWatchList())
     } catch (error) {
       console.warn(error)
-      showErrorToast('登出失敗')
+      showErrorToast('登出失敗，請稍後再嘗試')
     }
   }
 

@@ -46,7 +46,13 @@ export function DraggableMovie ({ movie, index }: Props) {
             </Flex>
             <Text fontWeight={800} fontSize={['xs', 'sm']}>平均分數： {truncateToDecimal(movie.voteAverage, 1)} / 10</Text>
             <Text mb={2} textAlign={'left'} noOfLines={2}>{traditionalized(movie.overview)}</Text>
-            <Button variant={'outline'} leftIcon={<DeleteIcon />} onClick={async () => await removeWatchList(movie.id)}>移除</Button>
+            <Button
+              size={'sm'}
+              variant={'outline'}
+              leftIcon={<DeleteIcon />}
+              onClick={async () => await removeWatchList(movie.id)}
+            >移除
+            </Button>
           </VStack>
         </HStack>
       )}

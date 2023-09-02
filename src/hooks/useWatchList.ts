@@ -23,7 +23,7 @@ export function useWatchList () {
       showSuccessToast('移除待看清單成功')
     } catch (error) {
       console.error('removeWatchList Error:', error)
-      showErrorToast('移除待看清單失敗')
+      showErrorToast('移除待看清單失敗，請稍後再嘗試')
     } finally {
       setIsLoading(false)
     }
@@ -64,7 +64,7 @@ export function useWatchList () {
       showSuccessToast('排序成功')
     } catch (error) {
       console.error('addWatchList Error:', error)
-      showErrorToast('排序失敗')
+      showErrorToast('排序失敗，請稍後再嘗試')
     } finally {
       setIsLoading(false)
     }
@@ -97,7 +97,7 @@ export function useWatchList () {
       showSuccessToast('排序成功')
     } catch (error) {
       console.error('sortMovieList Error:', error)
-      showErrorToast('排序失敗')
+      showErrorToast('排序失敗，請稍後再嘗試')
     } finally {
       setIsLoading(false)
     }

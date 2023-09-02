@@ -27,7 +27,7 @@ export function ButtonGoogleLogin ({ action, ...props }: Props) {
       showSuccessToast('登入成功')
     } catch (error) {
       console.error('Google 登入時出錯:', error)
-      showErrorToast('登入失敗')
+      showErrorToast('登入失敗，請稍後再嘗試')
     } finally {
       action?.()
     }

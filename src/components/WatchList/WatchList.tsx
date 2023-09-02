@@ -49,7 +49,7 @@ export function WatchList () {
           <Flex justifyContent={'space-between'} alignItems={'center'} mb={4}>
             <Heading fontSize={'xl'}>我的待看清單（{watchList.length}）</Heading>
             <Menu>
-              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+              <MenuButton size={'sm'} as={Button} rightIcon={<ChevronDownIcon />}>
                 排序
               </MenuButton>
               <MenuList>
