@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { type sortByOptionsType, type DiscoverMovieParams } from '../types/Discoverd/Movies'
 
-export const DRAWER_MOVIES_SORT_BY_OPTIONS: sortByOptionsType = [
+export const MOVIES_SORT_BY_OPTIONS: sortByOptionsType = [
   { label: '按人氣降序', value: 'popularity.desc' },
   { label: '按人氣升序', value: 'popularity.asc' },
   { label: '按評分降序', value: 'vote_average.desc' },

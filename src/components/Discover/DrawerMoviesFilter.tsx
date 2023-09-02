@@ -2,7 +2,7 @@ import { Flex, Text, Spacer, Button, Drawer, DrawerBody, DrawerContent, DrawerFo
 import { Select } from 'chakra-react-select'
 import { useState } from 'react'
 import { TextFieldLabel } from '../TextFieldLabel'
-import { DRAWER_MOVIES_SORT_BY_OPTIONS, MOVIES_INIT_FILTER } from '../../constants/movies'
+import { MOVIES_SORT_BY_OPTIONS, MOVIES_INIT_FILTER } from '../../constants/movies'
 import { type sortByOptionsType, type DiscoverMovieParams } from '../../types/Discoverd/Movies'
 
 const rangeSliderMarkStyle = {
@@ -32,20 +32,20 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
   const [isLargerThanLg] = useMediaQuery('(min-width: 960px)')
   const [moviesFilter, setMoviesFilter] = useState<Filter>({
     ...filter,
-    sort_by: DRAWER_MOVIES_SORT_BY_OPTIONS.find((option) => option.value === filter.sort_by) ?? DRAWER_MOVIES_SORT_BY_OPTIONS[0]
+    sort_by: MOVIES_SORT_BY_OPTIONS.find((option) => option.value === filter.sort_by) ?? MOVIES_SORT_BY_OPTIONS[0]
   })
 
   const handleReset = () => {
     setMoviesFilter({
       ...MOVIES_INIT_FILTER,
-      sort_by: DRAWER_MOVIES_SORT_BY_OPTIONS[0]
+      sort_by: MOVIES_SORT_BY_OPTIONS[0]
     })
   }
 
   const handleCancel = () => {
     setMoviesFilter({
       ...filter,
-      sort_by: DRAWER_MOVIES_SORT_BY_OPTIONS.find((option) => option.value === filter.sort_by) ?? DRAWER_MOVIES_SORT_BY_OPTIONS[0]
+      sort_by: MOVIES_SORT_BY_OPTIONS.find((option) => option.value === filter.sort_by) ?? MOVIES_SORT_BY_OPTIONS[0]
     })
     onClose()
   }
@@ -76,7 +76,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
           <Box gap={2}>
             <TextFieldLabel value='排序結果依據' />
             <Select
-              options={DRAWER_MOVIES_SORT_BY_OPTIONS}
+              options={MOVIES_SORT_BY_OPTIONS}
               onChange={(newValue) => {
                 if (newValue != null) {
                   setMoviesFilter({

@@ -1,10 +1,12 @@
-import { Flex, Heading, Skeleton, SkeletonText, Stack, VStack } from '@chakra-ui/react'
+import { Button, Flex, Heading, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Stack, VStack } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { type RootState } from '../../store'
 import { useWatchList } from '../../hooks/useWatchList'
 import { DragDropContext, Droppable, type DropResult } from 'react-beautiful-dnd'
 import { useCallback } from 'react'
 import { DraggableMovie } from './DraggableMovie'
+import { ChevronDownIcon } from '@chakra-ui/icons'
+import { MOVIES_SORT_BY_OPTIONS } from '../../constants/movies'
 
 const calculateDragToFirstSort = (firstSort: number) => firstSort / 2
 const calculateDragToLastSort = (lastSort: number) => lastSort + 1
@@ -12,7 +14,7 @@ const calculateDragToBetweenSort = (prevSort: number, nextSort: number) => (prev
 
 export function WatchList () {
   const { watchList } = useSelector((state: RootState) => state.watchList)
-  const { setMovieSort } = useWatchList()
+  const { setMovieSort, sortMovieList } = useWatchList()
 
   const onDragEnd = useCallback(({ source, destination }: DropResult) => {
     if (!destination || !watchList) return
@@ -44,7 +46,19 @@ export function WatchList () {
     <Flex flexDirection={'column'}>
       {watchList
         ? <>
-          <Heading mb={4} fontSize={'xl'}>我的待看清單（{watchList.length}）</Heading>
+          <Flex justifyContent={'space-between'} alignItems={'center'} mb={4}>
+            <Heading fontSize={'xl'}>我的待看清單（{watchList.length}）</Heading>
+            <Menu>
+              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                排序
+              </MenuButton>
+              <MenuList>
+                {MOVIES_SORT_BY_OPTIONS.map((option) => (
+                  <MenuItem key={option.value} onClick={async () => await sortMovieList(option.value)}>{option.label}</MenuItem>
+                ))}
+              </MenuList>
+            </Menu>
+          </Flex>
           <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId={'droppableId'}>
               {(provided) => (

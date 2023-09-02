@@ -17,6 +17,9 @@ interface Props {
   title: Movie['title']
   voteAverage: Movie['vote_average']
   overview: Movie['overview']
+  releaseDate: Movie['release_date']
+  popularity: Movie['popularity']
+  voteCount: Movie['vote_count']
 }
 
 export function CardMovie (props: Props) {

@@ -51,6 +51,9 @@ export function Movies () {
               title={movie.title}
               voteAverage={movie.vote_average}
               overview={movie.overview}
+              popularity={movie.popularity}
+              releaseDate={movie.release_date}
+              voteCount={movie.vote_count}
             />
           )
         })}

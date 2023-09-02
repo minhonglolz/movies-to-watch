@@ -37,7 +37,7 @@ export function DraggableMovie ({ movie, index }: Props) {
           <Box minW={[130, 150]}>
             <Poster {...movie} imageProps={{ borderLeftRadius: '12px' }} />
           </Box>
-          <VStack align={'flex-start'} p={4}>
+          <VStack w='full' align={'flex-start'} p={4}>
             <Flex w={'full'} justifyContent={'space-between'} align={'center'}>
               <Heading fontSize={['md', 'xl']}>{movie.title}</Heading>
               <Box {...provided.dragHandleProps}>

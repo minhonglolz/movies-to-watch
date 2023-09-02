@@ -120,5 +120,8 @@ export interface FirebaseMovie {
   voteAverage: Movie['vote_average']
   posterPath: Movie['poster_path']
   overview: Movie['overview']
+  releaseDate: Movie['release_date']
+  popularity: Movie['popularity']
+  voteCount: Movie['vote_count']
   sort: number
 }
