@@ -1,5 +1,5 @@
 import { type StringBooleanUnion } from '../StringBoolean'
-import { type TmdbListResponse } from '../Tmdb/TmdbListResponse1'
+import { type TmdbListResponse } from '../Tmdb/TmdbListResponse'
 
 export interface Movie {
   poster_path?: string
