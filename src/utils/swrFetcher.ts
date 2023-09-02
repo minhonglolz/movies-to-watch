@@ -1,4 +1,4 @@
-import tmdbBaseAxios from './tmdbBaseAxios'
+import { tmdbBaseAxios } from './tmdbBaseAxios'
 
 export const tmdbSWRFetcher = async (url: string) =>
   await tmdbBaseAxios().get(url)

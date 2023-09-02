@@ -8,7 +8,7 @@ import { tmdbSWRFetcher } from '../../utils/swrFetcher'
 import { CardMovie } from '../CardMovie'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { Pagination } from '../Pagination'
-import useDebounceCallback from '../../hooks/useDebounceCallback'
+import { useDebounceCallback } from '../../hooks/useDebounceCallback'
 
 const getSearchParams = (query: string, page: number) => {
   return query ? `?query=${query}&page=${page}` : ''

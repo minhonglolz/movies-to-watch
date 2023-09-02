@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function tmdbBaseAxios () {
+export function tmdbBaseAxios () {
   const axiosInstance = axios.create({
     baseURL: import.meta.env.TMDB_API_ROOT,
     headers: {

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-export default function useDebounceCallback () {
+export function useDebounceCallback () {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const debounceCallback = (callback: () => void, debounce = 1000) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
