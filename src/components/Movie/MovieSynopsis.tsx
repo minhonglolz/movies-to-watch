@@ -25,7 +25,7 @@ export function MovieSynopsis (props: Props) {
   return (
     <Flex direction={{ base: 'column', md: 'row' }} alignItems="center" gap={6}>
       <Box minW={[200, 300]} borderRadius={12} overflow="hidden">
-        <Poster id={Number(id)} posterPath={posterPath} />
+        <Poster id={Number(id)} posterPath={posterPath} canClick={false} />
       </Box>
       <Flex direction="column" gap={4} textAlign={{ base: 'center', md: 'left' }}>
         <Heading fontSize={['xl', '3xl']}>{title} {`(${dayjs(releaseDate).format('YYYY')})`}</Heading>

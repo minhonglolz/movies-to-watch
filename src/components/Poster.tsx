@@ -9,9 +9,10 @@ interface Props {
   id: Movie['id']
   posterPath: Movie['poster_path']
   imageProps?: ImageProps
+  canClick?: boolean
 }
 
-export function Poster ({ imageProps, ...movie }: Props) {
+export function Poster ({ imageProps, canClick = true, ...movie }: Props) {
   const { posterPath, id } = movie
 
   const [isLoad, setIsLoad] = useState(false)
@@ -19,8 +20,7 @@ export function Poster ({ imageProps, ...movie }: Props) {
   const theme = useTheme()
 
   const _imageProps = {
-    onClick: () => navigate(`/movie/${id}`),
-    cursor: 'pointer',
+    ...(canClick && { onClick: () => navigate(`/movie/${id}`), cursor: 'pointer' }),
     ...imageProps
   }
 
@@ -36,8 +36,8 @@ export function Poster ({ imageProps, ...movie }: Props) {
             backgroundColor={theme.colors.gray[900]}
             transition="opacity .5s"
             onLoad={() => setIsLoad(true)}
-            _hover={{ opacity: 0.6 }}
             src={`${POSTER_IMAGE_URL_X2}${posterPath}`}
+            {...(canClick && { _hover: { opacity: 0.6 } })}
             {..._imageProps}
           />
         </AspectRatio>
