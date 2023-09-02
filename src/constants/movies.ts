@@ -20,7 +20,7 @@ export const MOVIES_INIT_FILTER: DiscoverMovieParams = {
   sort_by: 'popularity.desc',
   'release_date.gte': dayjs().format('YYYY-MM-DD'),
   'release_date.lte': dayjs().add(5, 'M').format('YYYY-MM-DD'),
-  'vote_average.gte': 1,
+  'vote_average.gte': 0,
   'vote_average.lte': 10,
   'vote_count.gte': 0
 }

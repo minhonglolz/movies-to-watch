@@ -120,7 +120,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
             <RangeSlider
               w="98%"
               alignSelf="flex-end"
-              min={1}
+              min={0}
               max={10}
               value={[moviesFilter['vote_average.gte'], moviesFilter['vote_average.lte']]}
               onChange={(newValue) => {
