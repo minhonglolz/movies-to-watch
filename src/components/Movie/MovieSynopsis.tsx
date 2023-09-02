@@ -1,11 +1,11 @@
-import { Flex, Heading, HStack, Tag, Text } from '@chakra-ui/react'
+import { Flex, Heading, HStack, Tag, Text, Box } from '@chakra-ui/react'
 import dayjs from 'dayjs'
 import { convertToHourMinute } from '../../utils/convertToHourMinute'
 import { traditionalized } from '../../utils/traditionalized'
-import { Poster } from './Poster'
 import { type MovieDetail } from '../../types/Discoverd/Movies'
 import { useParams } from 'react-router-dom'
 import { truncateToDecimal } from '../../utils/tmdb'
+import { Poster } from '../Poster'
 
 interface Props {
   posterPath: MovieDetail['poster_path']
@@ -17,12 +17,16 @@ interface Props {
   voteAverage: MovieDetail['vote_average']
 }
 
-export function MovieIntroduction ({ posterPath, title, releaseDate, genres, overview, voteAverage, runtime }: Props) {
+export function MovieSynopsis (props: Props) {
+  const { genres, runtime, ...movie } = props
+  const { posterPath, title, releaseDate, overview, voteAverage } = movie
   const { id } = useParams()
+
   return (
     <Flex direction={{ base: 'column', md: 'row' }} alignItems={'center'} gap={6}>
-      <Poster posterUrl={posterPath} id={Number(id)} />
-
+      <Box minW={[200, 300]} borderRadius={12} overflow={'hidden'}>
+        <Poster id={Number(id)} posterPath={posterPath} />
+      </Box>
       <Flex direction={'column'} gap={4} textAlign={{ base: 'center', md: 'left' }}>
         <Heading fontSize={['xl', '3xl']}>{title} {`(${dayjs(releaseDate).format('YYYY')})`}</Heading>
         <Text fontWeight={800} fontSize={['md', 'lg']}>平均分數： {truncateToDecimal(voteAverage, 1)} / 10</Text>

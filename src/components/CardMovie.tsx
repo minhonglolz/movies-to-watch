@@ -1,6 +1,6 @@
 import { GridItem, useColorModeValue, Text, useTheme, Grid } from '@chakra-ui/react'
 import { traditionalized } from '../utils/traditionalized'
-import { Poster } from './Discover/Poster'
+import { Poster } from './Poster'
 import { useNavigate } from 'react-router-dom'
 import { type Movie } from '../types/Discoverd/Movies'
 import { truncateToDecimal } from '../utils/tmdb'
@@ -52,7 +52,7 @@ export function CardMovie (props: Props) {
       display={'flex'}
       flexDirection={'column'}
     >
-      <Poster {...props} />
+      <Poster {...props} imageProps={{ borderTopRadius: '12px' }} />
       <Grid templateColumns='repeat(8, 1fr)' py={4} px={2}>
         <GridItem colSpan={7} w={'full'} alignItems={'start'} gap={1}>
           <Text
@@ -64,6 +64,7 @@ export function CardMovie (props: Props) {
             _hover={{
               opacity: 0.6
             }}
+            noOfLines={1}
           >
             {traditionalized(title)}
           </Text>

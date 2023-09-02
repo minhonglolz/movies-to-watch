@@ -1,37 +1,34 @@
-import { AspectRatio, Box, Image, useMediaQuery, useTheme } from '@chakra-ui/react'
-import { POSTER_IMAGE_URL_X2, POSTER_IMAGE_URL_X1 } from '../../constants/movies'
-import noImage from '../../assets/noImage.svg'
+import { AspectRatio, Image, type ImageProps, useTheme } from '@chakra-ui/react'
+import { POSTER_IMAGE_URL_X2 } from '../constants/movies'
+import noImage from '../assets/noImage.svg'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { type Movie } from '../../types/Discoverd/Movies'
+import { type Movie } from '../types/Discoverd/Movies'
 
 interface Props {
   id: Movie['id']
   posterPath: Movie['poster_path']
-  title: Movie['title']
-  voteAverage: Movie['vote_average']
-  overview: Movie['overview']
+  imageProps?: ImageProps
 }
 
-export function Poster (props: Props) {
-  const { posterPath, id } = props
+export function Poster ({ imageProps, ...movie }: Props) {
+  const { posterPath, id } = movie
 
-  const [isLargerThanLg] = useMediaQuery('(min-width: 960px)')
   const [isLoad, setIsLoad] = useState(false)
   const navigate = useNavigate()
   const theme = useTheme()
 
-  const imageProps = {
+  const _imageProps = {
     onClick: () => navigate(`/movie/${id}`),
-    cursor: 'pointer'
+    cursor: 'pointer',
+    ...imageProps
   }
 
   return (
-    <Box overflow={'hidden'} borderTopRadius={'12px'}>
+    <>
       {posterPath != null
         ? <AspectRatio ratio={2 / 3}>
           <Image
-            {...imageProps}
             opacity={isLoad ? 1 : 0}
             w={'full'}
             h={'full'}
@@ -40,17 +37,17 @@ export function Poster (props: Props) {
             transition={'opacity .5s'}
             onLoad={() => setIsLoad(true)}
             _hover={{ opacity: 0.6 }}
-            src={`${isLargerThanLg ? POSTER_IMAGE_URL_X2 : POSTER_IMAGE_URL_X1}${posterPath}`}
+            src={`${POSTER_IMAGE_URL_X2}${posterPath}`}
+            {..._imageProps}
           />
         </AspectRatio>
         : <AspectRatio ratio={2 / 3}>
           <Image
-            {...imageProps}
             objectFit={'fill'}
             src={noImage}
+            {..._imageProps}
           />
-        </AspectRatio>
-          }
-    </Box>
+        </AspectRatio>}
+    </>
   )
 }

@@ -4,7 +4,7 @@ import { useEffect, useMemo } from 'react'
 import { getURLWithParams } from '../../utils/urlParams'
 import { Button, Flex } from '@chakra-ui/react'
 import { useTmdbSWR } from '../../hooks/useTmdbSWR'
-import { MovieIntroduction } from './MovieIntroduction'
+import { MovieSynopsis } from './MovieSynopsis'
 import { MovieLinks } from './MovieLinks'
 import { MovieDirectors } from './MovieDirectors'
 import { MovieSeriesCast } from './MovieSeriesCast'
@@ -44,7 +44,7 @@ export function MovieInfo () {
             <Button>加入待看清單</Button>
           </Flex>
           <Flex flexDirection={'column'} gap={6}>
-            <MovieIntroduction
+            <MovieSynopsis
               posterPath={movieDetail.poster_path}
               title={movieDetail.title}
               releaseDate={movieDetail.release_date}
