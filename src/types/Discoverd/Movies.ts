@@ -1,5 +1,5 @@
 import { type StringBooleanUnion } from '../StringBoolean'
-import { type TMDBListResponse } from '../TMDB/TMDBListResponse'
+import { type TmdbListResponse } from '../Tmdb/TmdbListResponse1'
 
 export interface Movie {
   poster_path?: string
@@ -18,7 +18,7 @@ export interface Movie {
   vote_average: number
 }
 
-export type MovieResponse = TMDBListResponse<Movie>
+export type MovieResponse = TmdbListResponse<Movie>
 
 export type SortByUnion = 'popularity.asc' | 'popularity.desc' | 'primary_release_date.asc' |
 'primary_release_date.desc' | 'vote_average.asc' | 'vote_average.desc' | 'vote_count.asc' | 'vote_count.desc'
@@ -113,7 +113,7 @@ export interface MovieReview {
   url: string
 }
 
-export type MovieReviewsResponse = TMDBListResponse<MovieReview>
+export type MovieReviewsResponse = TmdbListResponse<MovieReview>
 
 export interface FirebaseMovie {
   id: Movie['id']

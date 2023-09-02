@@ -1,7 +1,7 @@
 import { SearchIcon } from '@chakra-ui/icons'
 import { InputGroup, InputLeftElement, Input, SimpleGrid } from '@chakra-ui/react'
 import { type ChangeEvent, useMemo, useState } from 'react'
-import { type SearchMovieResponse, type SearchMovieParams } from '../../types/Search.ts/Search'
+import { type SearchMovieResponse, type SearchMovieParams } from '../../types/Search/Search'
 import { getURLWithParams } from '../../utils/urlParams'
 import useSWR from 'swr'
 import { tmdbSWRFetcher } from '../../utils/swrFetcher'

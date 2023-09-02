@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-throw-literal */
 import axios, { type AxiosError } from 'axios'
-import { type TMDBErrorResponse } from '../types/TMDB/TMDBErrorResponse'
+import { type TmdbErrorResponse } from '../types/Tmdb/TmdbErrorResponse'
 
 export default function tmdbBaseAxios () {
   const axiosInstance = axios.create({
@@ -23,7 +23,7 @@ export default function tmdbBaseAxios () {
       // Otherwise just return the data
       return response
     },
-    (error: AxiosError<TMDBErrorResponse>) => {
+    (error: AxiosError<TmdbErrorResponse>) => {
       if ((error?.response?.data) != null) {
         throw error.response.data
       }

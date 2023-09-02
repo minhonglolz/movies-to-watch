@@ -1,6 +1,6 @@
 import { Flex, HStack, Image, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import TMDBLogo from '../../assets/TMDB-logo.png'
+import tmdbLogo from '../../assets/tmdbLogo.png'
 
 export function TheFooter () {
   return (
@@ -14,7 +14,7 @@ export function TheFooter () {
       <Flex gap={'4'} justifyContent='center' alignItems={'center'}>
         <Text>Powered by</Text>
         <Link to="https://www.themoviedb.org/">
-          <Image src={TMDBLogo} />
+          <Image src={tmdbLogo} />
         </Link>
       </Flex>
     </HStack>
