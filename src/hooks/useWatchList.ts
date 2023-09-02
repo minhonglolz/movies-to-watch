@@ -29,11 +29,15 @@ export function useWatchList () {
     try {
       setIsLoading(true)
       const snapshot = (await get(query(watchListRef, orderByChild('sort'), limitToLast(1))))
-      const last = Object.values(snapshot.val()).at(0) as FirebaseMovie | undefined
 
-      const pushValue = { ...props, sort: last ? last.sort + 1 : 1 }
-
-      await push(watchListRef, pushValue)
+      if (snapshot.exists()) {
+        const last = Object.values(snapshot.val()).at(0) as FirebaseMovie
+        const pushValue = { ...props, sort: last.sort + 1 }
+        await push(watchListRef, pushValue)
+      } else {
+        const pushValue = { ...props, sort: 1 }
+        await push(watchListRef, pushValue)
+      }
       showSuccessToast('加入待看清單成功')
     } catch (error) {
       console.error('addWatchList Error:', error)

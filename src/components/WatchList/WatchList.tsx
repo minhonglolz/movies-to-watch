@@ -10,9 +10,9 @@ import { useWatchList } from '../../hooks/useWatchList'
 import { DragDropContext, Draggable, Droppable, type DropResult } from 'react-beautiful-dnd'
 import { useCallback } from 'react'
 
-export const calculateDragInTheFirst = (first: number) => first / 2
-export const calculateDragInTheLast = (last: number) => last + 1
-export const calculateDragInBetween = (prev: number, next: number) => (prev + next) / 2
+const calculateDragToFirstSort = (firstSort: number) => firstSort / 2
+const calculateDragToLastSort = (lastSort: number) => lastSort + 1
+const calculateDragToBetweenSort = (prevSort: number, nextSort: number) => (prevSort + nextSort) / 2
 
 export function WatchList () {
   const { watchList } = useSelector((state: RootState) => state.watchList)
@@ -21,32 +21,33 @@ export function WatchList () {
   const [isLargerThanLg] = useMediaQuery('(min-width: 960px)')
   const theme = useTheme()
   const cardBorderColor = useColorModeValue(theme.colors.gray[100], theme.colors.gray[400])
+
   const imageProps = {
     onClick: () => navigate('/movie'),
     cursor: 'pointer'
   }
-  // const sortedWatchList = useMemo(() => {
-  //   if (!watchList) return null
-  //   return [...watchList].sort((a, b) => a.sort - b.sort)
-  // }, [watchList])
 
   const onDragEnd = useCallback(({ source, destination }: DropResult) => {
     if (!destination || !watchList) return
-    const isFirst = destination.index === 0
-    const isLast = destination.index === watchList?.length - 1
-    const { id } = watchList[source.index]
+
+    const [destinationIndex, sourceIndex] = [destination.index, source.index]
+    const isDragToFirst = destinationIndex === 0
+    const isDragToLast = destinationIndex === watchList.length - 1
+    const { id } = watchList[sourceIndex]
+
     if (!id) return
-    if (isFirst) {
-      setMovieSort(id, calculateDragInTheFirst(watchList[0].sort))
-      // dispatch(setMovieSort({ id, sort: calculateDragInTheFirst(watchList[0].sort) }))
-    } else if (isLast) {
-      // dispatch(setMovieSort({ id, sort: calculateDragInTheLast(watchList.at(-1)?.sort as number) }))
-      setMovieSort(id, calculateDragInTheLast(watchList.at(-1)?.sort as number))
+
+    if (isDragToFirst) {
+      setMovieSort(id, calculateDragToFirstSort(watchList[0].sort))
+    } else if (isDragToLast) {
+      setMovieSort(id, calculateDragToLastSort(watchList.at(-1)?.sort as number))
     } else {
-      const prev = watchList[destination.index].sort
-      const next = watchList[destination.index + 1].sort
-      setMovieSort(id, calculateDragInBetween(prev, next))
-      // dispatch(setMovieSort({ id, sort: calculateDragInBetween(prev, next) }))
+      const prevPosition = destinationIndex > sourceIndex ? 0 : -1
+      const nextPosition = destinationIndex > sourceIndex ? 1 : 0
+      const prev = watchList[destinationIndex + prevPosition]
+      const next = watchList[destinationIndex + nextPosition]
+
+      setMovieSort(id, calculateDragToBetweenSort(prev.sort, next.sort))
     }
   }, [setMovieSort, watchList])
 
