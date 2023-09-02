@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { Avatar, Box, Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Image } from '@chakra-ui/react'
 import { ThemeToggle } from './ThemeToggle'
 import { Link, useNavigate } from 'react-router-dom'
 import { SearchIcon } from '@chakra-ui/icons'
@@ -6,6 +6,7 @@ import { useAuthState } from '../../hooks/useAuthState'
 import { ButtonGoogleLogin } from '../../firebase/ButtonGoogleLogin'
 import { GoSignOut } from 'react-icons/go'
 import { useToast } from '../../hooks/useToast'
+import PopcornIcon from '../../assets/popcorn.ico'
 
 export function TheHeader () {
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ export function TheHeader () {
     <Box p={4} pt={8} w='full' position={'relative'}>
       <Flex justifyContent='space-between' alignItems='center' gap={4}>
         <Button mr='auto' fontSize='4xl' fontWeight='800' variant='unstyled' display={'flex'}>
-          <Link to='/'>🍿️</Link>
+          <Link to='/'><Image src={PopcornIcon} /></Link>
         </Button>
         <Button variant='unstyled' onClick={handleClickWatchListButton}>
           待看清單
