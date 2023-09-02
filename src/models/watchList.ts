@@ -4,14 +4,12 @@ import { type FirebaseMovie, type Movie } from '../types/Discoverd/Movies'
 export interface WatchListState {
   watchList: FirebaseMovie[] | null
   watchListIdMap: Map<Movie['id'], FirebaseMovie> | null
-  sortedWatchList: FirebaseMovie[] | null
 
 }
 
 const initialState: WatchListState = {
   watchList: null,
-  watchListIdMap: new Map(),
-  sortedWatchList: null
+  watchListIdMap: new Map()
 }
 
 export const watchList = createSlice({
