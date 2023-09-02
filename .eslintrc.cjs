@@ -62,6 +62,7 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
-    'react/jsx-curly-brace-presence': ['error']
+    'react/jsx-curly-brace-presence': ['error'],
+    '@typescript-eslint/prefer-nullish-coalescing': 'off'
   }
 }
