@@ -9,7 +9,7 @@ interface Props {
 export function NoData ({ children }: Props) {
   return (
     <VStack p={30} align="center" spacing={6}>
-      <SearchIcon boxSize="250px" />
+      <SearchIcon boxSize="200px" />
       <Heading fontSize={['lg', 'xl']}>很抱歉，查無資料</Heading>
       {children}
     </VStack>
