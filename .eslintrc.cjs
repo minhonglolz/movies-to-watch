@@ -61,6 +61,7 @@ module.exports = {
     'react/jsx-closing-bracket-location': ['warn', 'tag-aligned'],
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
-    '@typescript-eslint/no-floating-promises': 'off'
+    '@typescript-eslint/no-floating-promises': 'off',
+    'react/jsx-curly-brace-presence': ['error']
   }
 }
