@@ -12,7 +12,6 @@ function ButtonIconHeartToggle ({ isFill, ...props }: Props, ref: unknown) {
       <GridItem
         ref={ref}
         mt={'2px'}
-        transition={'all .5s'}
         borderRadius={'20px'}
         w={'20px'}
         h={'20px'}
