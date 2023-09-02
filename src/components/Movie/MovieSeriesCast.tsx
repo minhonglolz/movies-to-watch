@@ -11,12 +11,7 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const displayMovieCast = useMemo(() => {
-    if (movieCreditsCast == null) return []
-    const _displayMovieCast: MovieCredits['cast'] = []
-    for (let i = 0; i < Math.min(MAX_DISPLAY_CAST, movieCreditsCast.length); i++) {
-      _displayMovieCast.push(movieCreditsCast[i])
-    }
-    return _displayMovieCast
+    return movieCreditsCast.slice(0, MAX_DISPLAY_CAST) ?? []
   }, [movieCreditsCast])
 
   return (
@@ -62,7 +57,6 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
           </ModalBody>
         </ModalContent>
       </Modal>
-
     </>
   )
 }

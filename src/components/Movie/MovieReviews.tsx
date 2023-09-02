@@ -20,14 +20,11 @@ export function MovieReviews () {
     return getURLWithParams(`https://api.themoviedb.org/3/movie/${id}/reviews`, params)
   }, [id])
   const { data, isLoading } = useTmdbSWR<MovieReviewsResponse>(movieCreditsKey)
+
   const displayReviews = useMemo(() => {
-    if (!data) return []
-    const _displayReviews = []
-    for (let i = 0; i < Math.min(data.results.length, MAX_DISPLAY_REVIEWS); i++) {
-      _displayReviews.push(data.results[i])
-    }
-    return _displayReviews
+    return data?.results.slice(0, MAX_DISPLAY_REVIEWS) ?? []
   }, [data])
+
   const theme = useTheme()
   const cardBackground = useColorModeValue('', 'gray.500')
   const cardBorder = useColorModeValue(`1px solid ${theme.colors.gray[50]}`, `1px solid ${theme.colors.gray[500]}`)
