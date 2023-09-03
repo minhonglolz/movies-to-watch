@@ -1,4 +1,4 @@
-import { Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Spacer, Stack, VStack } from '@chakra-ui/react'
+import { Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, VStack } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { type RootState } from '../../store'
 import { useWatchList } from '../../hooks/useWatchList'
@@ -9,6 +9,8 @@ import { MOVIES_SORT_BY_OPTIONS } from '../../constants/movies'
 import { PageTitle } from '../PageTitle'
 import { BiFilterAlt } from 'react-icons/bi'
 import { WatchListSlot } from './WatchListSlot'
+import { ErrorAuthBoundary } from '../ErrorAuthBoundary'
+import { SkeletonWatchList } from './SkeletonWatchList'
 
 const calculateDragToFirstSort = (firstSort: number) => firstSort / 2
 const calculateDragToLastSort = (lastSort: number) => lastSort + 1
@@ -47,54 +49,52 @@ export function WatchList () {
   const slotOptions = useMemo(() => watchList?.map(({ posterPath, id }) => ({ id, posterPath })), [watchList])
 
   return (
+
     <Flex flexDirection="column">
-      {watchList
-        ? <>
-          <Flex alignItems="center" mb={4}>
-            <PageTitle>我的待看清單（{watchList.length}）</PageTitle>
-            <Spacer />
-            {!!slotOptions?.length && <WatchListSlot movies={slotOptions} />}
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                variant="ghost"
-                aria-label='Filter database'
-                icon={<BiFilterAlt />}
-              />
-              <MenuList>
-                {MOVIES_SORT_BY_OPTIONS.map((option) => (
-                  <MenuItem key={option.value} onClick={async () => await sortMovieList(option.value)}>{option.label}</MenuItem>
-                ))}
-              </MenuList>
-            </Menu>
-          </Flex>
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="droppableId">
-              {(provided) => (
-                <VStack
-                  spacing={4}
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                >
-                  {watchList.map((movie, index) => (
-                    <DraggableMovie
-                      key={movie.id}
-                      movie={movie}
-                      index={index}
-                    />
+      <ErrorAuthBoundary>
+        {watchList
+          ? <>
+            <Flex alignItems="center" mb={4}>
+              <PageTitle>我的待看清單（{watchList.length}）</PageTitle>
+              <Spacer />
+              {!!slotOptions?.length && <WatchListSlot movies={slotOptions} />}
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  variant="ghost"
+                  aria-label='Filter database'
+                  icon={<BiFilterAlt />}
+                />
+                <MenuList>
+                  {MOVIES_SORT_BY_OPTIONS.map((option) => (
+                    <MenuItem key={option.value} onClick={async () => await sortMovieList(option.value)}>{option.label}</MenuItem>
                   ))}
-                  {provided.placeholder}
-                </VStack>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </>
-        : <Stack spacing={4}>
-          <SkeletonText noOfLines={1} skeletonHeight='6' w="200px" />
-          {new Array(3).fill('').map((_, index) => (
-            <Skeleton key={index} height='200px' />
-          ))}
-        </Stack>}
+                </MenuList>
+              </Menu>
+            </Flex>
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId="droppableId">
+                {(provided) => (
+                  <VStack
+                    spacing={4}
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                  >
+                    {watchList.map((movie, index) => (
+                      <DraggableMovie
+                        key={movie.id}
+                        movie={movie}
+                        index={index}
+                      />
+                    ))}
+                    {provided.placeholder}
+                  </VStack>
+                )}
+              </Droppable>
+            </DragDropContext>
+          </>
+          : <SkeletonWatchList />}
+      </ErrorAuthBoundary>
     </Flex>
   )
 }

@@ -2,7 +2,7 @@ import { useToast as useBaseToast } from '@chakra-ui/react'
 
 const toastProps = {
   position: 'top-right',
-  duration: 1000,
+  duration: 2000,
   isClosable: true
 } as const
 
