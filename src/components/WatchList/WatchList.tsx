@@ -1,13 +1,15 @@
-import { Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Stack, VStack } from '@chakra-ui/react'
+import { Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Spacer, Stack, VStack } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { type RootState } from '../../store'
 import { useWatchList } from '../../hooks/useWatchList'
 import { DragDropContext, Droppable, type DropResult } from 'react-beautiful-dnd'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { DraggableMovie } from './DraggableMovie'
 import { MOVIES_SORT_BY_OPTIONS } from '../../constants/movies'
 import { PageTitle } from '../PageTitle'
 import { BiFilterAlt } from 'react-icons/bi'
+import { LiaRandomSolid } from 'react-icons/lia'
+import { WatchListSlot } from './WatchListSlot'
 
 const calculateDragToFirstSort = (firstSort: number) => firstSort / 2
 const calculateDragToLastSort = (lastSort: number) => lastSort + 1
@@ -43,12 +45,16 @@ export function WatchList () {
     }
   }, [setMovieSort, watchList])
 
+  const slotOptions = useMemo(() => watchList?.map(({ posterPath, id }) => ({ id, posterPath })), [watchList])
+
   return (
     <Flex flexDirection="column">
       {watchList
         ? <>
-          <Flex justifyContent="space-between" alignItems="center" mb={4}>
+          <Flex alignItems="center" mb={4}>
             <PageTitle>我的待看清單（{watchList.length}）</PageTitle>
+            <Spacer />
+            {!!slotOptions && <WatchListSlot movies={slotOptions} />}
             <Menu>
               <MenuButton
                 as={IconButton}
