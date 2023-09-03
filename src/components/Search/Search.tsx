@@ -1,5 +1,5 @@
 import { SearchIcon } from '@chakra-ui/icons'
-import { InputGroup, InputLeftElement, Input, SimpleGrid } from '@chakra-ui/react'
+import { InputGroup, InputLeftElement, Input, SimpleGrid, Button } from '@chakra-ui/react'
 import { type ChangeEvent, useMemo, useState } from 'react'
 import { type SearchMovieResponse, type SearchMovieParams } from '../../types/Search/Search'
 import { getURLWithParams } from '../../utils/urlParams'
@@ -94,7 +94,15 @@ export function Search () {
                 />
               : <></>}
             {data?.total_results === 0 &&
-              <NoData />}
+              <NoData>
+                <Button variant='outline' onClick={() => {
+                  setSearchInput('')
+                  navigate('/search')
+                }}
+                >
+                  清除搜尋
+                </Button>
+              </NoData>}
           </>
           : <SkeletonMovieList />}
       </ErrorBoundary>
