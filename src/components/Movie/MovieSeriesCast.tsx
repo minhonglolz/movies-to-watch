@@ -21,7 +21,7 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
           <Text fontWeight={800} fontSize={['lg', 'xl']}>演員陣容</Text>
           <Button variant="outline" onClick={onOpen}>查看全部</Button>
         </HStack>
-        <Flex overflowX="scroll" gap={4}>
+        <Flex overflowX="auto" gap={4}>
           <HStack>
             {displayMovieCast.map((director) => (
               <Avatar
