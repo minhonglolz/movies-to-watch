@@ -77,7 +77,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
       <DrawerOverlay height='100% !important' />
       <DrawerContent my={0} height='100% !important'>
         <DrawerHeader display="flex" alignItems="center">
-          <Text>搜尋</Text>
+          <Text>篩選</Text>
           <Spacer />
           <Button variant='outline' onClick={handleReset}>重置</Button>
         </DrawerHeader>

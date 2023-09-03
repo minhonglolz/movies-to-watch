@@ -76,7 +76,7 @@ export function Movies () {
             {data.total_results === 0 &&
               <NoData>
                 <Button variant='outline' onClick={() => setFilter(MOVIES_INIT_FILTER)}>
-                  重置搜尋
+                  重置篩選
                 </Button>
               </NoData>}
           </>
