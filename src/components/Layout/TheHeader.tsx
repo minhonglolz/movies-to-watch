@@ -20,13 +20,9 @@ export function TheHeader () {
         {isLoaded &&
         (googleAuth
           ? <Menu>
-            <MenuButton
-              as={Avatar}
-              aria-label='user'
-              size="sm"
-              name={googleAuth.name ?? 'U'}
-              src={googleAuth.photoURL ?? undefined}
-            />
+            <MenuButton as={Button} aria-label='user' variant="unstyled">
+              <Avatar size="sm" name={googleAuth.name ?? 'U'} src={googleAuth.photoURL ?? undefined} />
+            </MenuButton>
             <MenuList>
               <MenuItem onClick={signOut} icon={<GoSignOut />}>
                 登出

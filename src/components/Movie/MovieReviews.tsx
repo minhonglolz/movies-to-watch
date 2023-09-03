@@ -46,43 +46,41 @@ export function MovieReviews () {
             </Link>}
           </HStack>
           {hasReviews
-            ? <>
-              <Flex flexDirection="column" gap={3}>
-                {displayReviews.map((review) => (
-                  <Card key={review.id} bg={cardBackground} boxShadow="md" border={cardBorder}>
-                    <CardBody py={2} px={4}>
-                      <CardHeader as={HStack} p={3} pl={0}>
-                        <Avatar
-                          as={Link}
-                          name={review.author}
-                          borderRadius='full'
-                          boxSize="50px"
-                          src={`${PEOPLE_IMAGE_URL_X1}${review.author_details.avatar_path}`}
-                          isExternal
-                          href={getReviewerUrl(review.author)}
-                        />
-                        <VStack alignItems="flex-start" gap={1}>
-                          <HStack>
-                            <Heading fontSize={['md', 'lg']}>
-                              來自&ensp;
-                              <Link textDecoration="underline" isExternal href={getReviewerUrl(review.author)}>{review.author}</Link>
-                            &ensp;的評論</Heading>
-                            <Tag>評分：{review.author_details.rating}</Tag>
-                          </HStack>
-                          <Text>{dayjs(review.created_at).format('YYYY/MM/DD')}</Text>
-                        </VStack>
-                      </CardHeader>
-                      <Text>{traditionalized(review.content)}</Text>
-                    </CardBody>
-                  </Card>
-                ))}
-              </Flex>
-
-            </>
-            : <Text>目前尚無評論</Text>
-            }
-        </>
-        }
+            ? <Flex flexDirection="column" gap={3}>
+              {displayReviews.map((review) => (
+                <Card key={review.id} bg={cardBackground} boxShadow="md" border={cardBorder}>
+                  <CardBody py={2} px={4}>
+                    <CardHeader as={HStack} p={3} pl={0}>
+                      <Avatar
+                        as={Link}
+                        name={review.author}
+                        borderRadius='full'
+                        boxSize="50px"
+                        src={`${PEOPLE_IMAGE_URL_X1}${review.author_details.avatar_path}`}
+                        isExternal
+                        href={getReviewerUrl(review.author)}
+                      />
+                      <VStack alignItems="flex-start" gap={1}>
+                        <HStack>
+                          <Heading fontSize={['md', 'lg']}>
+                            來自
+                            &ensp;
+                            <Link textDecoration="underline" isExternal href={getReviewerUrl(review.author)}>{review.author}</Link>
+                            &ensp;
+                            的評論
+                          </Heading>
+                          <Tag>評分：{review.author_details.rating}</Tag>
+                        </HStack>
+                        <Text>{dayjs(review.created_at).format('YYYY/MM/DD')}</Text>
+                      </VStack>
+                    </CardHeader>
+                    <Text>{traditionalized(review.content)}</Text>
+                  </CardBody>
+                </Card>
+              ))}
+            </Flex>
+            : <Text>目前尚無評論</Text>}
+        </>}
     </Box>
   )
 }

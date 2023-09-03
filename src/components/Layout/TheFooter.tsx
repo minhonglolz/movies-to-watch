@@ -13,7 +13,7 @@ export function TheFooter () {
       </HStack>
       <Flex gap="4" justifyContent='center' alignItems="center">
         <Text>Powered by</Text>
-        <Link to="https://www.themoviedb.org/">
+        <Link target='_blank' to="https://www.themoviedb.org/">
           <Image src={tmdbLogo} />
         </Link>
       </Flex>
