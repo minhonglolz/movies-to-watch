@@ -11,7 +11,7 @@ import ButtonIconHeartToggle from './ButtonIconHeartToggle'
 import { useAuthState } from '../hooks/useAuthState'
 import { useToast } from '../hooks/useToast'
 
-interface Props {
+export interface CardMovieProps {
   id: Movie['id']
   posterPath: Movie['poster_path']
   title: Movie['title']
@@ -22,7 +22,7 @@ interface Props {
   voteCount: Movie['vote_count']
 }
 
-export function CardMovie (props: Props) {
+export function CardMovie (props: CardMovieProps) {
   const { id, title, voteAverage } = props
   const theme = useTheme()
   const cardBorderColor = useColorModeValue(theme.colors.gray[50], theme.colors.gray[500])
