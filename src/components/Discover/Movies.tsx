@@ -13,6 +13,7 @@ import { Pagination } from '../Pagination'
 import { NoData } from '../NoData'
 import { SkeletonMovieList } from '../SkeletonMovieList'
 import { ErrorBoundary } from '../ErrorBoundary'
+import { convertMovieTypeToCardMovieType } from '../../utils/tmdb'
 
 export function Movies () {
   const [filter, setFilter] = useState<DiscoverMovieParams>(MOVIES_INIT_FILTER)
@@ -56,14 +57,7 @@ export function Movies () {
               {data?.results.map((movie) => (
                 <CardMovie
                   key={movie.id}
-                  id={movie.id}
-                  posterPath={movie.poster_path}
-                  title={movie.title}
-                  voteAverage={movie.vote_average}
-                  overview={movie.overview}
-                  popularity={movie.popularity}
-                  releaseDate={movie.release_date}
-                  voteCount={movie.vote_count}
+                  {...convertMovieTypeToCardMovieType(movie)}
                 />
               ))}
             </SimpleGrid>
