@@ -71,7 +71,6 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
           <Spacer />
           <Button variant='outline' onClick={handleReset}>重置</Button>
         </DrawerHeader>
-
         <DrawerBody py={5} as={Flex} flexDirection="column" gap={6}>
           <Box gap={2}>
             <TextFieldLabel value='排序結果依據' />
@@ -100,6 +99,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                 onChange={(e) => {
                   setMoviesFilter({ ...moviesFilter, 'release_date.gte': e.target.value })
                 }}
+                max={moviesFilter['release_date.lte']}
               />
             </HStack>
             <HStack>
@@ -112,6 +112,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                 onChange={(e) => {
                   setMoviesFilter({ ...moviesFilter, 'release_date.lte': e.target.value })
                 }}
+                min={moviesFilter['release_date.gte']}
               />
             </HStack>
           </Box>
