@@ -1,7 +1,7 @@
 import { GridItem, useColorModeValue, Text, useTheme, Grid } from '@chakra-ui/react'
 import { traditionalized } from '../utils/traditionalized'
 import { Poster } from './Poster'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { type Movie } from '../types/Discoverd/Movies'
 import { truncateToDecimal } from '../utils/tmdb'
 import { useSelector } from 'react-redux'
@@ -59,8 +59,8 @@ export function CardMovie (props: Props) {
       <Grid templateColumns='repeat(8, 1fr)' py={4} px={2}>
         <GridItem colSpan={7} w="full" alignItems="start" gap={1}>
           <Text
-            onClick={() => { navigate(`/movie/${id}`) }}
-            cursor="pointer"
+            as={Link}
+            to={`/movie/${id}`}
             fontWeight={600}
             fontSize={['sm', 'sm', 'md']}
             transition="opacity .3s"

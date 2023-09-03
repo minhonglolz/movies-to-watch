@@ -1,8 +1,8 @@
-import { AspectRatio, Image, type ImageProps, useTheme } from '@chakra-ui/react'
+import { AspectRatio, Image, type ImageProps, useTheme, Box } from '@chakra-ui/react'
 import { POSTER_IMAGE_URL_X2 } from '../constants/movies'
 import noImage from '../assets/noImage.svg'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { type Movie } from '../types/Discoverd/Movies'
 
 interface Props {
@@ -16,37 +16,35 @@ export function Poster ({ imageProps, canClick = true, ...movie }: Props) {
   const { posterPath, id } = movie
 
   const [isLoad, setIsLoad] = useState(false)
-  const navigate = useNavigate()
   const theme = useTheme()
-
-  const _imageProps = {
-    ...(canClick && { onClick: () => navigate(`/movie/${id}`), cursor: 'pointer' }),
-    ...imageProps
-  }
 
   return (
     <>
       {posterPath != null
         ? <AspectRatio ratio={2 / 3}>
-          <Image
-            opacity={isLoad ? 1 : 0}
-            w="full"
-            h="full"
-            objectFit="cover"
-            backgroundColor={theme.colors.gray[900]}
-            transition="opacity .5s"
-            onLoad={() => setIsLoad(true)}
-            src={`${POSTER_IMAGE_URL_X2}${posterPath}`}
-            {...(canClick && { _hover: { opacity: 0.6 } })}
-            {..._imageProps}
-          />
+          <Box as={canClick ? Link : undefined} to={`/movie/${id}`}>
+            <Image
+              opacity={isLoad ? 1 : 0}
+              w="full"
+              h="full"
+              objectFit="cover"
+              backgroundColor={theme.colors.gray[900]}
+              transition="opacity .5s"
+              onLoad={() => setIsLoad(true)}
+              src={`${POSTER_IMAGE_URL_X2}${posterPath}`}
+              {...(canClick && { _hover: { opacity: 0.6 } })}
+              {...imageProps}
+            />
+          </Box>
         </AspectRatio>
         : <AspectRatio ratio={2 / 3}>
-          <Image
-            objectFit="fill"
-            src={noImage}
-            {..._imageProps}
-          />
+          <Box as={canClick ? Link : undefined} to={`/movie/${id}`}>
+            <Image
+              objectFit="fill"
+              src={noImage}
+              {...imageProps}
+            />
+          </Box>
         </AspectRatio>}
     </>
   )
