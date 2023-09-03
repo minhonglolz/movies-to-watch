@@ -1,7 +1,7 @@
 import { GridItem, useColorModeValue, Text, useTheme, Grid } from '@chakra-ui/react'
 import { traditionalized } from '../utils/traditionalized'
 import { Poster } from './Poster'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { type Movie } from '../types/Discoverd/Movies'
 import { truncateToDecimal } from '../utils/tmdb'
 import { useSelector } from 'react-redux'
@@ -26,7 +26,6 @@ export function CardMovie (props: Props) {
   const { id, title, voteAverage } = props
   const theme = useTheme()
   const cardBorderColor = useColorModeValue(theme.colors.gray[50], theme.colors.gray[500])
-  const navigate = useNavigate()
   const { watchListIdMap: watchListIdSet } = useSelector((state: RootState) => state.watchList)
   const hasWatchListId = !!watchListIdSet?.has(id)
 

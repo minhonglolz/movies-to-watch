@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { type MovieDetailParams, type MovieDetail, type MovieCredits } from '../../types/Discoverd/Movies'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { getURLWithParams } from '../../utils/urlParams'
 import { Flex } from '@chakra-ui/react'
 import { useTmdbSWR } from '../../hooks/useTmdbSWR'
@@ -16,8 +16,14 @@ import { useToast } from '../../hooks/useToast'
 import { useWatchList } from '../../hooks/useWatchList'
 import { useAuthState } from '../../hooks/useAuthState'
 import { ErrorBoundary } from '../ErrorBoundary'
+import { SkeletonMovieInfo } from './SkeletonMovieInfo'
 
 export function MovieInfo () {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   const { id } = useParams()
 
   const movieDetailKey = useMemo(() => {
@@ -113,7 +119,7 @@ export function MovieInfo () {
             <MovieReviews />
           </Flex>
         </>
-        : <></>
+        : <SkeletonMovieInfo />
     }
     </ErrorBoundary>
   )
