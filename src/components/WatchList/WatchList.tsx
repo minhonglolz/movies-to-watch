@@ -53,7 +53,7 @@ export function WatchList () {
           <Flex alignItems="center" mb={4}>
             <PageTitle>我的待看清單（{watchList.length}）</PageTitle>
             <Spacer />
-            {!!slotOptions && <WatchListSlot movies={slotOptions} />}
+            {!!slotOptions?.length && <WatchListSlot movies={slotOptions} />}
             <Menu>
               <MenuButton
                 as={IconButton}

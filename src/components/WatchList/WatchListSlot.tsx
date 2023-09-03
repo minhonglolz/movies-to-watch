@@ -22,20 +22,19 @@ export function WatchListSlot ({ movies }: Props) {
 
   const [isStart, setIsStart] = useState(false)
   const [options, setOptions] = useState<Props['movies']>()
-  const [prevUrl, setPrevUrl] = useState<Props['movies'][number]>()
+  const [prevMovie, setPrevMovie] = useState<Props['movies'][number]>()
 
   const getOptions = useCallback(() => {
-    if (!movies) return []
+    if (!movies.length) return null
     const _options = Array.from({ length: slotLength }).map(() => movies[getRandom(movieCount)])
-    if (prevUrl) {
+    if (prevMovie) {
       _options[0] = {
-        id: prevUrl.id,
-        posterPath: prevUrl.posterPath
+        id: prevMovie.id,
+        posterPath: prevMovie.posterPath
       }
     }
-    console.log(_options)
     setOptions(_options)
-  }, [movieCount, movies, prevUrl, slotLength])
+  }, [movieCount, movies, prevMovie, slotLength])
 
   useEffect(() => {
     if (!isStart) {
@@ -66,13 +65,13 @@ export function WatchListSlot ({ movies }: Props) {
   const handleClickStart = () => {
     setIsStart(true)
     if (options) {
-      setPrevUrl(options.at(-1))
+      setPrevMovie(options.at(-1))
     }
   }
 
   const handleClose = () => {
     setIsStart(false)
-    setPrevUrl(undefined)
+    setPrevMovie(undefined)
     onClose()
   }
 
@@ -106,7 +105,7 @@ export function WatchListSlot ({ movies }: Props) {
                     imageProps={{ mx: 'auto', borderRadius: 12 }}
                     id={id}
                     posterPath={posterPath}
-                    canClick={!isStart && !!prevUrl}
+                    canClick={!isStart && !!prevMovie}
                   />
                 ))}
               </Box>
