@@ -40,7 +40,7 @@ export function DraggableMovie ({ movie, index }: Props) {
           </Box>
           <VStack w='full' align="flex-start" p={4}>
             <Flex w="full" justifyContent="space-between" align="center">
-              <Heading fontSize={['md', 'xl']}>{movie.title}</Heading>
+              <Heading fontSize={['md', 'xl']} noOfLines={1}>{movie.title}</Heading>
               <Box {...provided.dragHandleProps}>
                 <DragHandleIcon boxSize="18px" />
               </Box>
