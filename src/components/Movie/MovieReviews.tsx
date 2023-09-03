@@ -34,7 +34,7 @@ export function MovieReviews () {
     <Box>
       {isLoading
         ? <Stack>
-          {new Array(MAX_DISPLAY_REVIEWS).fill('').map((_item, index) => (
+          {Array.from({ length: MAX_DISPLAY_REVIEWS }).map((_item, index) => (
             <Skeleton key={index} h="120px" mb={3} isLoaded={false} />
           ))}
         </Stack>

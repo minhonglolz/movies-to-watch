@@ -4,7 +4,7 @@ export function SkeletonWatchList () {
   return (
     <Stack spacing={4}>
       <SkeletonText noOfLines={1} skeletonHeight='6' w="200px" />
-      {new Array(3).fill('').map((_, index) => (
+      {Array.from({ length: 3 }).map((_, index) => (
         <Skeleton key={index} height='200px' />
       ))}
     </Stack>

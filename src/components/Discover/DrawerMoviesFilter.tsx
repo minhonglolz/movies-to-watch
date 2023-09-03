@@ -176,7 +176,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
               <SliderMark value={0} mt='3' ml='-5px'>
                 0
               </SliderMark>
-              {new Array(5).fill('').map((_, index) =>
+              {Array.from({ length: 5 }).map((_, index) =>
                 <SliderMark key={index} value={index + 1} mt='3' ml='-14px'>
                   {(index + 1) * 100}
                 </SliderMark>)}
