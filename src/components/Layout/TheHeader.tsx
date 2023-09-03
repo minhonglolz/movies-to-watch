@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Image, Text } from '@chakra-ui/react'
+import { Avatar, Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Image, Text } from '@chakra-ui/react'
 import { ThemeToggle } from './ThemeToggle'
 import { Link } from 'react-router-dom'
 import { SearchIcon } from '@chakra-ui/icons'
