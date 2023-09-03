@@ -1,4 +1,4 @@
-import { Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Spacer, Stack, VStack } from '@chakra-ui/react'
+import { Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonText, Spacer, Stack, VStack } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { type RootState } from '../../store'
 import { useWatchList } from '../../hooks/useWatchList'
@@ -8,7 +8,6 @@ import { DraggableMovie } from './DraggableMovie'
 import { MOVIES_SORT_BY_OPTIONS } from '../../constants/movies'
 import { PageTitle } from '../PageTitle'
 import { BiFilterAlt } from 'react-icons/bi'
-import { LiaRandomSolid } from 'react-icons/lia'
 import { WatchListSlot } from './WatchListSlot'
 
 const calculateDragToFirstSort = (firstSort: number) => firstSort / 2

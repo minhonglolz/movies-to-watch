@@ -23,7 +23,7 @@ export function WatchListSlot ({ movies }: Props) {
   const [isStart, setIsStart] = useState(false)
   const [options, setOptions] = useState<Props['movies']>()
   const [prevUrl, setPrevUrl] = useState<Props['movies'][number]>()
-  // console.log(prevUrl)
+
   const getOptions = useCallback(() => {
     if (!movies) return []
     const _options = Array.from({ length: slotLength }).map(() => movies[getRandom(movieCount)])
@@ -60,7 +60,7 @@ export function WatchListSlot ({ movies }: Props) {
     100% { transform: rotate(0deg); }
   `
 
-  const slotAnimation = `${spin} 3s forwards`
+  const spinAnimation = `${spin} 3s forwards`
   const shakingAnimation = `${shaking} .5s 3s`
 
   const handleClickStart = () => {
@@ -98,14 +98,14 @@ export function WatchListSlot ({ movies }: Props) {
                 h="300px"
                 w="200px"
                 onAnimationEnd={(e) => e.stopPropagation()}
-                animation={isStart ? slotAnimation : undefined}
+                animation={isStart ? spinAnimation : undefined}
               >
-                {options?.map((movie) => (
+                {options?.map(({ id, posterPath }, index) => (
                   <Poster
-                    key={movie.id}
+                    key={index}
                     imageProps={{ mx: 'auto', borderRadius: 12 }}
-                    id={movie.id}
-                    posterPath={movie.posterPath}
+                    id={id}
+                    posterPath={posterPath}
                     canClick={!isStart && !!prevUrl}
                   />
                 ))}
