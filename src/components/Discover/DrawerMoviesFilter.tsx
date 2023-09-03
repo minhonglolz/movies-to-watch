@@ -1,6 +1,6 @@
 import { Flex, Text, Spacer, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, HStack, Box, useMediaQuery, RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack, RangeSliderMark, Slider, SliderFilledTrack, SliderThumb, SliderTrack, SliderMark } from '@chakra-ui/react'
 import { Select } from 'chakra-react-select'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TextFieldLabel } from '../TextFieldLabel'
 import { MOVIES_SORT_BY_OPTIONS, MOVIES_INIT_FILTER } from '../../constants/movies'
 import { type sortByOptionsType, type DiscoverMovieParams } from '../../types/Discoverd/Movies'
@@ -35,6 +35,15 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
     sort_by: MOVIES_SORT_BY_OPTIONS.find((option) => option.value === filter.sort_by) ?? MOVIES_SORT_BY_OPTIONS[0]
   })
 
+  useEffect(() => {
+    if (filter) {
+      setMoviesFilter({
+        ...filter,
+        sort_by: MOVIES_SORT_BY_OPTIONS.find((option) => option.value === filter.sort_by) ?? MOVIES_SORT_BY_OPTIONS[0]
+      })
+    }
+  }, [filter])
+
   const handleReset = () => {
     setMoviesFilter({
       ...MOVIES_INIT_FILTER,
@@ -57,6 +66,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
       sort_by: moviesFilter.sort_by.value
     })
   }
+
   return (
     <Drawer
       isOpen={isOpen}
@@ -79,7 +89,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
               onChange={(newValue) => {
                 if (newValue != null) {
                   setMoviesFilter({
-                    ...filter,
+                    ...moviesFilter,
                     sort_by: newValue
                   })
                 }
