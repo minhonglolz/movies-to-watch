@@ -65,9 +65,9 @@ export function WatchList () {
                   aria-label='Filter database'
                   icon={<BiFilterAlt />}
                 />
-                <MenuList>
+                <MenuList as="ul">
                   {MOVIES_SORT_BY_OPTIONS.map((option) => (
-                    <MenuItem key={option.value} onClick={async () => await sortMovieList(option.value)}>{option.label}</MenuItem>
+                    <MenuItem as="li" key={option.value} onClick={async () => await sortMovieList(option.value)}>{option.label}</MenuItem>
                   ))}
                 </MenuList>
               </Menu>
@@ -76,6 +76,7 @@ export function WatchList () {
               <Droppable droppableId="droppableId">
                 {(provided) => (
                   <VStack
+                    as="ul"
                     spacing={4}
                     ref={provided.innerRef}
                     {...provided.droppableProps}

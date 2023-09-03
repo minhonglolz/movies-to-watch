@@ -15,9 +15,9 @@ export function MovieDirectors ({ movieCreditsCrew }: Props) {
   return (
     <Flex w="100%" flexDirection="column">
       <Text fontWeight={800} fontSize={['lg', 'xl']} mb={2}>導演</Text>
-      <Grid templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }} gap={4}>
+      <Grid as="ul" templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }} gap={4}>
         {movieDirectors?.map((director) => (
-          <HStack key={director.id}>
+          <HStack key={director.id} as="li">
             <Avatar
               name={director.name}
               borderRadius='full'

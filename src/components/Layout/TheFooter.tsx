@@ -4,7 +4,7 @@ import tmdbLogo from '../../assets/tmdbLogo.png'
 
 export function TheFooter () {
   return (
-    <HStack p='4' justifyContent='space-between' gap={6} flexDirection={['column-reverse', 'row']}>
+    <HStack as="footer" p='4' justifyContent='space-between' gap={6} flexDirection={['column-reverse', 'row']}>
       <HStack gap='4'>
         <Text>© 2023</Text>
         <Text fontSize='md' fontWeight='600'>

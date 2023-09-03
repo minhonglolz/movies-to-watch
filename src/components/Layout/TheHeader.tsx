@@ -11,13 +11,12 @@ export function TheHeader () {
   const { googleAuth, signOut, isLoaded } = useAuthState()
 
   return (
-    <Box p={4} pt={8} w='full' position="relative">
-      <Flex justifyContent='space-between' alignItems='center' gap={4}>
-        <Button mr='auto' fontSize='4xl' fontWeight='800' variant='unstyled' display="flex">
-          <Link to='/'><Image src={PopcornIcon} boxSize="40px" /></Link>
-        </Button>
-        <Text as={Link} fontWeight={600} to='/watch-list'>待看清單</Text>
-        {isLoaded &&
+    <Flex as='nav' p={4} pt={8} w='full' position="relative" justifyContent='space-between' alignItems='center' gap={4}>
+      <Button mr='auto' fontSize='4xl' fontWeight='800' variant='unstyled' display="flex">
+        <Link to='/'><Image src={PopcornIcon} boxSize="40px" /></Link>
+      </Button>
+      <Text as={Link} fontWeight={600} to='/watch-list'>待看清單</Text>
+      {isLoaded &&
         (googleAuth
           ? <Menu>
             <MenuButton as={Button} aria-label='user' variant="unstyled">
@@ -30,18 +29,17 @@ export function TheHeader () {
             </MenuList>
           </Menu>
           : <ButtonGoogleLogin />)}
-        <ThemeToggle />
-        <IconButton
-          as={Link}
-          to="/search"
-          display="inline-flex"
-          variant="unstyled"
-          icon={<SearchIcon />}
-          aria-label="search"
-          background='none'
-        />
-      </Flex>
-    </Box>
+      <ThemeToggle />
+      <IconButton
+        as={Link}
+        to="/search"
+        display="inline-flex"
+        variant="unstyled"
+        icon={<SearchIcon />}
+        aria-label="search"
+        background='none'
+      />
+    </Flex>
 
   )
 }

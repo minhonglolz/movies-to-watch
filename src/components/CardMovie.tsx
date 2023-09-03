@@ -47,6 +47,7 @@ export function CardMovie (props: Props) {
   }
   return (
     <GridItem
+      as="li"
       key={id}
       borderRadius={12}
       border={`.5px solid ${cardBorderColor}`}

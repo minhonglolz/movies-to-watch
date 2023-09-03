@@ -22,9 +22,10 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
           <Button variant="outline" onClick={onOpen}>查看全部</Button>
         </HStack>
         <Flex overflowX="auto" gap={4}>
-          <HStack>
+          <HStack as="ul">
             {displayMovieCast.map((director) => (
               <Avatar
+                as="li"
                 key={director.id}
                 name={director.name}
                 borderRadius='full'
@@ -41,9 +42,9 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
           <ModalHeader>演員陣容</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Flex flexDirection="column" gap={2}>
+            <Flex as="ul" flexDirection="column" gap={2}>
               {movieCreditsCast.map((cast) => (
-                <HStack key={cast.id}>
+                <HStack as="li" key={cast.id}>
                   <Avatar
                     name={cast.name}
                     borderRadius='full'

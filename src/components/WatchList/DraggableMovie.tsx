@@ -25,6 +25,7 @@ export function DraggableMovie ({ movie, index }: Props) {
     >
       {(provided, snapshot) => (
         <HStack
+          as="li"
           {...provided.draggableProps}
           ref={provided.innerRef}
           w="full"

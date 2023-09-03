@@ -46,9 +46,9 @@ export function MovieReviews () {
             </Link>}
           </HStack>
           {hasReviews
-            ? <Flex flexDirection="column" gap={3}>
+            ? <Flex as="ul" flexDirection="column" gap={3}>
               {displayReviews.map((review) => (
-                <Card key={review.id} bg={cardBackground} boxShadow="md" border={cardBorder}>
+                <Card as="li" key={review.id} bg={cardBackground} boxShadow="md" border={cardBorder}>
                   <CardBody py={2} px={4}>
                     <CardHeader as={HStack} p={3} pl={0}>
                       <Avatar

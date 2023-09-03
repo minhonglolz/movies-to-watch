@@ -52,7 +52,7 @@ export function Movies () {
       <ErrorBoundary isLoading={isLoading} error={error} retryAction={() => { mutate() }}>
         {(!isLoading && data)
           ? <>
-            <SimpleGrid gap={6} columns={[2, 4, 5]}>
+            <SimpleGrid as="ul" gap={6} columns={[2, 4, 5]}>
               {data?.results.map((movie) => (
                 <CardMovie
                   key={movie.id}
