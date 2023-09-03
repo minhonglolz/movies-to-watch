@@ -12,6 +12,10 @@ const rangeSliderMarkStyle = {
   w: '12'
 } as const
 
+const sliderThumbStyle = {
+  shadow: 'dark-lg'
+} as const
+
 interface Filter {
   sort_by: sortByOptionsType[number]
   'release_date.gte'?: DiscoverMovieParams['release_date.gte']
@@ -158,8 +162,8 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
               <RangeSliderTrack>
                 <RangeSliderFilledTrack />
               </RangeSliderTrack>
-              <RangeSliderThumb index={0} zIndex={0} />
-              <RangeSliderThumb index={1} zIndex={0} />
+              <RangeSliderThumb {...sliderThumbStyle} index={0} zIndex={0} />
+              <RangeSliderThumb {...sliderThumbStyle} index={1} zIndex={0} />
             </RangeSlider>
           </Flex>
           <Flex flexDirection="column" mb="12">
@@ -190,7 +194,7 @@ export function DrawerMoviesFilter ({ isOpen, onClose, filter, onSubmit }: Props
                 <SliderMark key={index} value={index + 1} mt='3' ml='-14px'>
                   {(index + 1) * 100}
                 </SliderMark>)}
-              <SliderThumb zIndex={0} />
+              <SliderThumb {...sliderThumbStyle} zIndex={0} />
             </Slider>
           </Flex>
         </DrawerBody>
