@@ -50,6 +50,8 @@ export function Search () {
     navigate(`/search${getSearchParams(query, page)}`)
   }
 
+  const isSearchKiwi = query === 'Kiwi'
+
   return (
     <>
       <InputGroup h="40px" w='full'>
@@ -67,6 +69,8 @@ export function Search () {
         />
       </InputGroup>
       <ErrorBoundary error={error} isLoading={isLoading} retryAction={() => { mutate() }}>
+        {isSearchKiwi &&
+          <iframe style={{ margin: 'auto' }} width="560" height="315" src="https://www.youtube.com/embed/7MhBzBRZ1Kg?si=AYEr_S77aupF_5Ig&amp;start=600" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />}
         {!isLoading
           ? <>
             <SimpleGrid mt={6} gap={6} columns={[2, 4, 5]}>
