@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     server: {
       port: 3000,
-      open: env.SERVER_OPEN_BROWSER === 'true'
-    }
+      open: env.SERVER_OPEN_BROWSER === 'true',
+    },
   }
 })

@@ -3,7 +3,7 @@ import { useToast as useBaseToast } from '@chakra-ui/react'
 const toastProps = {
   position: 'top-right',
   duration: 2000,
-  isClosable: true
+  isClosable: true,
 } as const
 
 export function useToast () {
@@ -12,7 +12,7 @@ export function useToast () {
     toast({
       title,
       status: 'success',
-      ...toastProps
+      ...toastProps,
     })
   }
 
@@ -20,7 +20,7 @@ export function useToast () {
     toast({
       title,
       status: 'error',
-      ...toastProps
+      ...toastProps,
     })
   }
 

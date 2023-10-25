@@ -11,6 +11,6 @@ export const colors: DeepPartial<Theme['colors']> = {
     600: '#131918',
     700: '#0e1312',
     800: '#0a0c0c',
-    900: '#050606'
-  }
+    900: '#050606',
+  },
 }

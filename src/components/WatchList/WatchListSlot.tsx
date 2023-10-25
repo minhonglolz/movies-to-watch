@@ -9,9 +9,9 @@ const OPTION_MINIMUM_AMOUNT = 10
 
 interface Props {
   movies: Array<{
-    id: FirebaseMovie['id']
-    posterPath: FirebaseMovie['posterPath']
-  }>
+    id: FirebaseMovie['id'],
+    posterPath: FirebaseMovie['posterPath'],
+  }>,
 }
 
 export function WatchListSlot ({ movies }: Props) {
@@ -30,7 +30,7 @@ export function WatchListSlot ({ movies }: Props) {
     if (prevMovie) {
       _options[0] = {
         id: prevMovie.id,
-        posterPath: prevMovie.posterPath
+        posterPath: prevMovie.posterPath,
       }
     }
     setOptions(_options)
@@ -78,7 +78,7 @@ export function WatchListSlot ({ movies }: Props) {
   return (
     <>
       <Button onClick={onOpen} leftIcon={<LiaRandomSolid />} variant="outline">隨機挑片</Button>
-      <Modal isOpen={isOpen} onClose={handleClose} isCentered scrollBehavior='inside'>
+      <Modal isOpen={isOpen} onClose={handleClose} isCentered scrollBehavior="inside">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>隨機挑片</ModalHeader>
@@ -111,7 +111,7 @@ export function WatchListSlot ({ movies }: Props) {
               </Box>
             </Flex>
             <Button
-              w='100px'
+              w="100px"
               mt={4}
               onClick={handleClickStart}
               isDisabled={isStart}

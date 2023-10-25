@@ -39,7 +39,7 @@ export function Search () {
     const params: SearchMovieParams = {
       language: 'zh-TW',
       page: Number(page),
-      query
+      query,
     }
     return getURLWithParams('https://api.themoviedb.org/3/search/movie', params)
   }, [page, query])
@@ -54,7 +54,7 @@ export function Search () {
 
   return (
     <>
-      <InputGroup h="40px" w='full'>
+      <InputGroup h="40px" w="full">
         <InputLeftElement
           pl={4}
           pointerEvents="none"
@@ -63,7 +63,7 @@ export function Search () {
         <Input
           h="40px"
           borderRadius="40px"
-          placeholder='搜尋電影'
+          placeholder="搜尋電影"
           value={searchInput}
           onChange={handleChangeInput}
         />
@@ -93,7 +93,7 @@ export function Search () {
               : <></>}
             {data?.total_results === 0 &&
               <NoData>
-                <Button variant='outline' onClick={() => {
+                <Button variant="outline" onClick={() => {
                   setSearchInput('')
                   navigate('/search')
                 }}

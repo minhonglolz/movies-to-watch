@@ -5,7 +5,7 @@ import { set, ref, get } from 'firebase/database'
 import { useToast } from '../hooks/useToast'
 
 type Props = ButtonProps & {
-  action?: () => void
+  action?: () => void,
 }
 
 export function ButtonGoogleLogin ({ action, ...props }: Props) {
@@ -21,7 +21,7 @@ export function ButtonGoogleLogin ({ action, ...props }: Props) {
       if (!snapshot.exists()) {
         await set(userRef, {
           username: displayName,
-          profilePicture: photoURL
+          profilePicture: photoURL,
         })
       }
       showSuccessToast('登入成功')

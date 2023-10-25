@@ -2,14 +2,14 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { type FirebaseMovie, type Movie } from '../types/Discoverd/Movies'
 
 export interface WatchListState {
-  watchList: FirebaseMovie[] | null
-  watchListIdMap: Map<Movie['id'], FirebaseMovie> | null
+  watchList: FirebaseMovie[] | null,
+  watchListIdMap: Map<Movie['id'], FirebaseMovie> | null,
 
 }
 
 const initialState: WatchListState = {
   watchList: null,
-  watchListIdMap: new Map()
+  watchListIdMap: new Map(),
 }
 
 export const watchList = createSlice({
@@ -31,8 +31,8 @@ export const watchList = createSlice({
       const draft = state.watchList?.find(({ id }) => id === action.payload.id)
       if (!draft) return
       draft.sort = action.payload.sort
-    }
-  }
+    },
+  },
 })
 
 export const { setWatchList, clearWatchList, setMovieSort } = watchList.actions

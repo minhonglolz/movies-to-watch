@@ -15,7 +15,7 @@ export function MovieReviews () {
   const movieCreditsKey = useMemo(() => {
     const params: MovieReviewsParams = {
       language: 'zh-TW',
-      page: 1
+      page: 1,
     }
     return getURLWithParams(`https://api.themoviedb.org/3/movie/${id}/reviews`, params)
   }, [id])
@@ -54,7 +54,7 @@ export function MovieReviews () {
                       <Avatar
                         as={Link}
                         name={review.author}
-                        borderRadius='full'
+                        borderRadius="full"
                         boxSize="50px"
                         src={`${PEOPLE_IMAGE_URL_X1}${review.author_details.avatar_path}`}
                         isExternal
@@ -69,7 +69,10 @@ export function MovieReviews () {
                             &ensp;
                             的評論
                           </Heading>
-                          <Tag>評分：{review.author_details.rating}</Tag>
+                          <Tag>
+                            評分：
+                            {review.author_details.rating}
+                          </Tag>
                         </HStack>
                         <Text>{dayjs(review.created_at).format('YYYY/MM/DD')}</Text>
                       </VStack>

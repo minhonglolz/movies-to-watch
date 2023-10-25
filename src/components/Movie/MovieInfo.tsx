@@ -28,7 +28,7 @@ export function MovieInfo () {
 
   const movieDetailKey = useMemo(() => {
     const params: MovieDetailParams = {
-      language: 'zh-TW'
+      language: 'zh-TW',
     }
     return getURLWithParams(`https://api.themoviedb.org/3/movie/${id}`, params)
   }, [id])
@@ -36,12 +36,12 @@ export function MovieInfo () {
     data: movieDetail,
     error: movieDetailError,
     isLoading: isLoadingDetail,
-    mutate: DetailMutate
+    mutate: DetailMutate,
   } = useTmdbSWR<MovieDetail>(movieDetailKey)
 
   const movieCreditsKey = useMemo(() => {
     const params: MovieDetailParams = {
-      language: 'zh-TW'
+      language: 'zh-TW',
     }
     return getURLWithParams(`https://api.themoviedb.org/3/movie/${id}/credits`, params)
   }, [id])
@@ -49,7 +49,7 @@ export function MovieInfo () {
     data: movieCredits,
     error: movieCreditsError,
     isLoading: isLoadingCredits,
-    mutate: CreditsMutate
+    mutate: CreditsMutate,
   } = useTmdbSWR<MovieCredits>(movieCreditsKey)
 
   const { watchListIdMap: watchListIdSet } = useSelector((state: RootState) => state.watchList)
@@ -77,7 +77,7 @@ export function MovieInfo () {
         releaseDate: movieDetail.release_date,
         title: movieDetail.title,
         voteAverage: movieDetail.vote_average,
-        voteCount: movieDetail.vote_count
+        voteCount: movieDetail.vote_count,
       })
     }
   }

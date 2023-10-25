@@ -12,14 +12,14 @@ import { useAuthState } from '../hooks/useAuthState'
 import { useToast } from '../hooks/useToast'
 
 export interface CardMovieProps {
-  id: Movie['id']
-  posterPath: Movie['poster_path']
-  title: Movie['title']
-  voteAverage: Movie['vote_average']
-  overview: Movie['overview']
-  releaseDate: Movie['release_date']
-  popularity: Movie['popularity']
-  voteCount: Movie['vote_count']
+  id: Movie['id'],
+  posterPath: Movie['poster_path'],
+  title: Movie['title'],
+  voteAverage: Movie['vote_average'],
+  overview: Movie['overview'],
+  releaseDate: Movie['release_date'],
+  popularity: Movie['popularity'],
+  voteCount: Movie['vote_count'],
 }
 
 export function CardMovie (props: CardMovieProps) {
@@ -56,7 +56,7 @@ export function CardMovie (props: CardMovieProps) {
       flexDirection="column"
     >
       <Poster {...props} imageProps={{ borderTopRadius: '12px' }} />
-      <Grid templateColumns='repeat(8, 1fr)' py={4} px={2}>
+      <Grid templateColumns="repeat(8, 1fr)" py={4} px={2}>
         <GridItem colSpan={7} w="full" alignItems="start" gap={1}>
           <Text
             as={Link}
@@ -65,13 +65,16 @@ export function CardMovie (props: CardMovieProps) {
             fontSize={['sm', 'sm', 'md']}
             transition="opacity .3s"
             _hover={{
-              opacity: 0.6
+              opacity: 0.6,
             }}
             noOfLines={1}
           >
             {traditionalized(title)}
           </Text>
-          <Text fontSize='xs'>平均分數：{truncateToDecimal(voteAverage, 1)}</Text>
+          <Text fontSize="xs">
+            平均分數：
+            {truncateToDecimal(voteAverage, 1)}
+          </Text>
         </GridItem>
         <ButtonIconHeartToggle
           isFill={hasWatchListId}

@@ -55,14 +55,18 @@ export function WatchList () {
         {watchList
           ? <>
             <Flex alignItems="center" mb={4}>
-              <PageTitle>我的待看清單（{watchList.length}）</PageTitle>
+              <PageTitle>
+                我的待看清單（
+                {watchList.length}
+                ）
+              </PageTitle>
               <Spacer />
               {!!slotOptions?.length && <WatchListSlot movies={slotOptions} />}
               <Menu>
                 <MenuButton
                   as={IconButton}
                   variant="ghost"
-                  aria-label='Filter database'
+                  aria-label="Filter database"
                   icon={<BiFilterAlt />}
                 />
                 <MenuList as="ul">

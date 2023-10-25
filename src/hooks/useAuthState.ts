@@ -6,9 +6,9 @@ import { clearWatchList } from '../models/watchList'
 import { useToast } from './useToast'
 
 interface Auth {
-  name: string | null
-  photoURL: string | null
-  uid: string | null
+  name: string | null,
+  photoURL: string | null,
+  uid: string | null,
 }
 
 export function useAuthState () {
@@ -24,7 +24,7 @@ export function useAuthState () {
         setGoogleAuth({
           uid: user.uid,
           name: user.displayName,
-          photoURL: user.photoURL
+          photoURL: user.photoURL,
         })
       } else {
         setGoogleAuth(undefined)

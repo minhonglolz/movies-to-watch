@@ -16,9 +16,9 @@ export function Routes () {
         { path: 'movie/:id', element: <MovieInfo /> },
         { path: 'watch-list', element: <WatchList /> },
         { path: 'search', element: <Search /> },
-        { path: '*', element: <NotFound /> }
-      ]
-    }
+        { path: '*', element: <NotFound /> },
+      ],
+    },
   ])
   return (
     <RouterProvider router={router} />

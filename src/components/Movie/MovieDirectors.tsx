@@ -4,7 +4,7 @@ import { type MovieCredits } from '../../types/Discoverd/Movies'
 import { useMemo } from 'react'
 
 interface Props {
-  movieCreditsCrew: MovieCredits['crew']
+  movieCreditsCrew: MovieCredits['crew'],
 }
 
 export function MovieDirectors ({ movieCreditsCrew }: Props) {
@@ -20,7 +20,7 @@ export function MovieDirectors ({ movieCreditsCrew }: Props) {
           <HStack key={director.id} as="li">
             <Avatar
               name={director.name}
-              borderRadius='full'
+              borderRadius="full"
               boxSize={['50px', '65px', '80px']}
               src={`${PEOPLE_IMAGE_URL_X1}${director.profile_path}`}
             />

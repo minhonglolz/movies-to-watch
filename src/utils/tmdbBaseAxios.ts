@@ -6,8 +6,8 @@ export function tmdbBaseAxios () {
     headers: {
       Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
       'Content-Type': 'application/json',
-      Accept: 'application/json'
-    }
+      Accept: 'application/json',
+    },
   })
   return axiosInstance
 }

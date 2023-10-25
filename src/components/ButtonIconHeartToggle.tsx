@@ -2,13 +2,13 @@ import { GridItem, Tooltip, type GridItemProps, forwardRef, useColorModeValue } 
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 type Props = GridItemProps & {
-  isFill: boolean
+  isFill: boolean,
 }
 
 function ButtonIconHeartToggle ({ isFill, ...props }: Props, ref: unknown) {
   const color = useColorModeValue('block', 'white')
   return (
-    <Tooltip label={isFill ? '移除待看清單' : '加入待看清單'} fontSize='md'>
+    <Tooltip label={isFill ? '移除待看清單' : '加入待看清單'} fontSize="md">
       <GridItem
         as="button"
         ref={ref}

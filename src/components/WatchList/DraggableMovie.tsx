@@ -8,8 +8,8 @@ import { useWatchList } from '../../hooks/useWatchList'
 import { Poster } from '../Poster'
 
 interface Props {
-  movie: FirebaseMovie
-  index: number
+  movie: FirebaseMovie,
+  index: number,
 }
 
 export function DraggableMovie ({ movie, index }: Props) {
@@ -38,21 +38,27 @@ export function DraggableMovie ({ movie, index }: Props) {
           <Box minW={[130, 150]}>
             <Poster {...movie} imageProps={{ borderLeftRadius: '12px' }} />
           </Box>
-          <VStack w='full' align="flex-start" p={4}>
+          <VStack w="full" align="flex-start" p={4}>
             <Flex w="full" justifyContent="space-between" align="center">
               <Heading fontSize={['md', 'xl']} noOfLines={1}>{movie.title}</Heading>
               <Box {...provided.dragHandleProps}>
                 <DragHandleIcon boxSize="18px" />
               </Box>
             </Flex>
-            <Text fontWeight={800} fontSize={['xs', 'sm']}>平均分數： {truncateToDecimal(movie.voteAverage, 1)} / 10</Text>
+            <Text fontWeight={800} fontSize={['xs', 'sm']}>
+              平均分數：
+              {truncateToDecimal(movie.voteAverage, 1)}
+              {' '}
+              / 10
+            </Text>
             <Text mb={2} textAlign="left" noOfLines={2}>{traditionalized(movie.overview)}</Text>
             <Button
               size="sm"
               variant="outline"
               leftIcon={<DeleteIcon />}
               onClick={async () => await removeWatchList(movie.id)}
-            >移除
+            >
+              移除
             </Button>
           </VStack>
         </HStack>

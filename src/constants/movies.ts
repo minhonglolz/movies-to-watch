@@ -9,7 +9,7 @@ export const MOVIES_SORT_BY_OPTIONS: sortByOptionsType = [
   { label: '按評分數降序', value: 'vote_count.desc' },
   { label: '按評分數升序', value: 'vote_count.asc' },
   { label: '按上映日期降序', value: 'primary_release_date.desc' },
-  { label: '按上映日期升序', value: 'primary_release_date.asc' }
+  { label: '按上映日期升序', value: 'primary_release_date.asc' },
 ]
 
 export const MOVIES_INIT_FILTER: DiscoverMovieParams = {
@@ -22,7 +22,7 @@ export const MOVIES_INIT_FILTER: DiscoverMovieParams = {
   'release_date.lte': dayjs().add(5, 'M').format('YYYY-MM-DD'),
   'vote_average.gte': 0,
   'vote_average.lte': 10,
-  'vote_count.gte': 0
+  'vote_count.gte': 0,
 }
 
 export const POSTER_IMAGE_URL_X1 = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'

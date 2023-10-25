@@ -79,7 +79,7 @@ export function useWatchList () {
       'vote_count.desc': b.voteCount - a.voteCount,
       'vote_count.asc': a.voteCount - b.voteCount,
       'primary_release_date.desc': dayjs(b.releaseDate).isBefore(a.releaseDate) ? 1 : -1,
-      'primary_release_date.asc': dayjs(a.releaseDate).isBefore(b.releaseDate) ? 1 : -1
+      'primary_release_date.asc': dayjs(a.releaseDate).isBefore(b.releaseDate) ? 1 : -1,
     }
     return by[sortBy]
   }

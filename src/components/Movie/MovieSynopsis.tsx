@@ -8,13 +8,13 @@ import { truncateToDecimal } from '../../utils/tmdb'
 import { Poster } from '../Poster'
 
 interface Props {
-  posterPath: MovieDetail['poster_path']
-  title: MovieDetail['title']
-  releaseDate: MovieDetail['release_date']
-  genres: MovieDetail['genres']
-  overview: MovieDetail['overview']
-  runtime: MovieDetail['runtime']
-  voteAverage: MovieDetail['vote_average']
+  posterPath: MovieDetail['poster_path'],
+  title: MovieDetail['title'],
+  releaseDate: MovieDetail['release_date'],
+  genres: MovieDetail['genres'],
+  overview: MovieDetail['overview'],
+  runtime: MovieDetail['runtime'],
+  voteAverage: MovieDetail['vote_average'],
 }
 
 export function MovieSynopsis (props: Props) {
@@ -28,8 +28,17 @@ export function MovieSynopsis (props: Props) {
         <Poster id={Number(id)} posterPath={posterPath} canClick={false} />
       </Box>
       <Flex direction="column" gap={4} textAlign={{ base: 'center', md: 'left' }}>
-        <Heading fontSize={['xl', '3xl']}>{title} {`(${dayjs(releaseDate).format('YYYY')})`}</Heading>
-        <Text fontWeight={800} fontSize={['md', 'lg']}>平均分數： {truncateToDecimal(voteAverage, 1)} / 10</Text>
+        <Heading fontSize={['xl', '3xl']}>
+          {title}
+          {' '}
+          {`(${dayjs(releaseDate).format('YYYY')})`}
+        </Heading>
+        <Text fontWeight={800} fontSize={['md', 'lg']}>
+          平均分數：
+          {truncateToDecimal(voteAverage, 1)}
+          {' '}
+          / 10
+        </Text>
 
         <Flex fontSize={['md', 'lg']} gap={2} flexDirection="column" alignItems={{ base: 'center', md: 'flex-start' }}>
           <HStack gap={2}>

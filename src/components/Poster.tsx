@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom'
 import { type Movie } from '../types/Discoverd/Movies'
 
 interface Props {
-  id: Movie['id']
-  posterPath: Movie['poster_path']
-  imageProps?: ImageProps
-  canClick?: boolean
+  id: Movie['id'],
+  posterPath: Movie['poster_path'],
+  imageProps?: ImageProps,
+  canClick?: boolean,
 }
 
 export function Poster ({ imageProps, canClick = true, ...movie }: Props) {

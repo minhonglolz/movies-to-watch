@@ -6,7 +6,7 @@ export function SkeletonMovieInfo () {
       <Flex direction={{ base: 'column', md: 'row' }} alignItems="center" gap={6}>
         <Skeleton minW={[200, 300]} minH={[350, 450]} borderRadius={12} overflow="hidden" />
         <Flex w="full" direction="column" gap={4} textAlign={{ base: 'center', md: 'left' }}>
-          <SkeletonText mt='4' noOfLines={5} spacing='4' skeletonHeight='8' />
+          <SkeletonText mt="4" noOfLines={5} spacing="4" skeletonHeight="8" />
         </Flex>
       </Flex>
       <VStack align="self-start">

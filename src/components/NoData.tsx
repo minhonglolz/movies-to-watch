@@ -3,7 +3,7 @@ import { Heading, VStack } from '@chakra-ui/react'
 import { type ReactNode } from 'react'
 
 interface Props {
-  children?: ReactNode
+  children?: ReactNode,
 }
 
 export function NoData ({ children }: Props) {

@@ -21,7 +21,7 @@ export function Movies () {
   const key = useMemo(() => {
     const params: DiscoverMovieParams = {
       ...filter,
-      'vote_count.gte': filter['vote_count.gte'] * 100
+      'vote_count.gte': filter['vote_count.gte'] * 100,
     }
     return getURLWithParams('https://api.themoviedb.org/3/discover/movie', params)
   }, [filter])
@@ -46,7 +46,7 @@ export function Movies () {
         <IconButton
           onClick={onOpen}
           variant="ghost"
-          aria-label='Filter database'
+          aria-label="Filter database"
           icon={<BiFilterAlt />}
         />
       </Flex>
@@ -69,7 +69,7 @@ export function Movies () {
             />
             {data.total_results === 0 &&
               <NoData>
-                <Button variant='outline' onClick={() => setFilter(MOVIES_INIT_FILTER)}>
+                <Button variant="outline" onClick={() => setFilter(MOVIES_INIT_FILTER)}>
                   重置篩選
                 </Button>
               </NoData>}

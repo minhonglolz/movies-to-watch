@@ -3,8 +3,8 @@ import { FaImdb } from 'react-icons/fa'
 import { type MovieDetail } from '../../types/Discoverd/Movies'
 
 interface Props {
-  homepage: MovieDetail['homepage']
-  imdbId: MovieDetail['imdb_id']
+  homepage: MovieDetail['homepage'],
+  imdbId: MovieDetail['imdb_id'],
 }
 
 export function MovieLinks ({ homepage, imdbId }: Props) {

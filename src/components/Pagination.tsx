@@ -2,14 +2,14 @@ import { HStack, IconButton, Text, type StackProps } from '@chakra-ui/react'
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight, MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md'
 
 const iconButtonProps = {
-  fontSize: '20px'
+  fontSize: '20px',
 } as const
 
 interface Props extends StackProps {
-  onChangePage: (page: number) => void
-  totalPages: number
-  currentPage: number
-  totalResults: number
+  onChangePage: (page: number) => void,
+  totalPages: number,
+  currentPage: number,
+  totalResults: number,
 }
 
 export function Pagination ({
@@ -35,7 +35,7 @@ export function Pagination ({
           <HStack spacing={2} alignItems="center" gap={4}>
 
             <IconButton
-              aria-label='first page button'
+              aria-label="first page button"
               onClick={() => {
                 onChangePage(1)
                 window.scrollTo(0, 0)
@@ -46,7 +46,7 @@ export function Pagination ({
               <MdOutlineKeyboardDoubleArrowLeft />
             </IconButton>
             <IconButton
-              aria-label='prev page button'
+              aria-label="prev page button"
               onClick={() => {
                 onChangePage(currentPage - 1)
                 window.scrollTo(0, 0)
@@ -57,10 +57,16 @@ export function Pagination ({
               <MdOutlineKeyboardArrowLeft />
             </IconButton>
 
-            <Text fontSize={['lg', 'xl']} fontWeight={800}>{currentPage} / {totalPages}</Text>
+            <Text fontSize={['lg', 'xl']} fontWeight={800}>
+              {currentPage}
+              {' '}
+              /
+              {' '}
+              {totalPages}
+            </Text>
 
             <IconButton
-              aria-label='next page button'
+              aria-label="next page button"
               onClick={() => {
                 onChangePage(currentPage + 1)
                 window.scrollTo(0, 0)
@@ -72,7 +78,7 @@ export function Pagination ({
             </IconButton>
 
             <IconButton
-              aria-label='last page button'
+              aria-label="last page button"
               onClick={() => {
                 onChangePage(totalPages)
                 window.scrollTo(0, 0)

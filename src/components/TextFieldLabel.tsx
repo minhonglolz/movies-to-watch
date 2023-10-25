@@ -1,7 +1,7 @@
 import { Text, type TextProps } from '@chakra-ui/react'
 
 type Props = TextProps & {
-  value: string
+  value: string,
 }
 export function TextFieldLabel ({ value, ...props }: Props) {
   return (

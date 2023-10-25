@@ -5,7 +5,7 @@ import { ButtonGoogleLogin } from './ButtonGoogleLogin'
 import { useAuthState } from '../hooks/useAuthState'
 
 interface Props {
-  children?: ReactNode
+  children?: ReactNode,
 }
 
 export function ErrorAuthBoundary ({ children }: Props) {

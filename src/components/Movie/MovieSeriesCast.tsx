@@ -4,7 +4,7 @@ import { MAX_DISPLAY_CAST, PEOPLE_IMAGE_URL_X1 } from '../../constants/movies'
 import { type MovieCredits } from '../../types/Discoverd/Movies'
 
 interface Props {
-  movieCreditsCast: MovieCredits['cast']
+  movieCreditsCast: MovieCredits['cast'],
 }
 
 export function MovieSeriesCast ({ movieCreditsCast }: Props) {
@@ -28,7 +28,7 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
                 as="li"
                 key={director.id}
                 name={director.name}
-                borderRadius='full'
+                borderRadius="full"
                 boxSize={['50px', '65px', '80px']}
                 src={`${PEOPLE_IMAGE_URL_X1}${director.profile_path}`}
               />
@@ -36,7 +36,7 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
           </HStack>
         </Flex>
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior='inside'>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior="inside">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>演員陣容</ModalHeader>
@@ -47,7 +47,7 @@ export function MovieSeriesCast ({ movieCreditsCast }: Props) {
                 <HStack as="li" key={cast.id}>
                   <Avatar
                     name={cast.name}
-                    borderRadius='full'
+                    borderRadius="full"
                     boxSize={['50px', '65px', '80px']}
                     src={`${PEOPLE_IMAGE_URL_X1}${cast.profile_path}`}
                   />

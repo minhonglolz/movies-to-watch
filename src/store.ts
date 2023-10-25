@@ -3,8 +3,8 @@ import watchList from './models/watchList'
 
 export const store = configureStore({
   reducer: {
-    watchList
-  }
+    watchList,
+  },
 })
 
 export type RootState = ReturnType<typeof store.getState>

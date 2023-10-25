@@ -13,6 +13,6 @@ export function convertMovieTypeToCardMovieType (movie: Movie): CardMovieProps {
     posterPath: movie.poster_path,
     voteAverage: movie.vote_average,
     releaseDate: movie.release_date,
-    voteCount: movie.vote_count
+    voteCount: movie.vote_count,
   }
 }
